@@ -1,0 +1,51 @@
+# ===========================================
+# Django / Python .gitignore
+# ===========================================
+
+# Virtual environment
+venv/
+env/
+my_venv/
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# VSCode settings
+.vscode/
+.idea/
+
+# Environment variables / secrets
+.env
+*.env
+
+# Django specific
+/staticfiles/
+media/
+static/
+db.sqlite3
+
+# Mac / Windows system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Pytest / coverage
+.coverage
+htmlcov/
+.tox/
+nosetests.xml
+coverage.xml
+
+# Migrations (optional – only if you don’t want them tracked early)
+# */migrations/
+
+# Node modules (if using npm or frontend build tools)
+node_modules/
+build/
+dist/
