@@ -1,11 +1,21 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
 
 # Create your views here.
 
+posts =[
+    {
+        'author': 'Blaise Hala',
+        'title': 'Blog Post',
+        'content':'FirstPosted',
+        'dateposted': 'August 27,2018'
 
-def home(request):
-    return HttpResponse('<h1>Blog Home</h1>')
+    }
+
+]
+
+
+
 
 def index(request):
     
@@ -13,8 +23,11 @@ def index(request):
     
 
 def members(request):
+    context = {
+             'posts': posts 
+        }
     
-    return render (request, 'bardapp/members.html')
+    return render(request, 'bardapp/members.html', context)
     
 
 

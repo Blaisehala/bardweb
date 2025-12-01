@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <button>Members</button>
+<a href="">This is a member Dashboard. View all registered members </a>
+
+{% for post in posts %}
+        <h1>{{ post.title }}</h1>
+        <p>By {{ post.author }} on {{ post.date_posted }} </p>
+        <p>{{ post.content }}</p>
+{% endfor %}
 
 
-<a href="{% url 'members' %}">This is a member Dashboard. View all registered members </a>
+</body>
+</html>
+
+
