@@ -1,38 +1,7 @@
 from django.shortcuts import render
-
+from .models import Post
 
 # Create your views here.
-
-posts =[
-    {
-        'author': 'Blaise Hala',
-        'title': 'Blog Post',
-        'content':'FirstPosted',
-        'dateposted': 'August 27,2018'
-
-    },
-
-
-     {
-        'author': 'Blaise Hala',
-        'title': 'Blog Post',
-        'content':'FirstPosted',
-        'dateposted': 'August 27,2018'
-
-    },
-
-
-     {
-        'author': 'Blaise Hala',
-        'title': 'Blog Post',
-        'content':'FirstPosted',
-        'dateposted': 'August 27,2018'
-
-    }
-
-]
-
-
 
 
 def index(request):
@@ -42,7 +11,7 @@ def index(request):
 
 def members(request):
     context = {
-             'posts': posts 
+             'posts': Post.objects.all() 
         }
     
     return render(request, 'bardapp/members.html', context)
