@@ -10,6 +10,35 @@
 
    <p class="text-4xl font-bold text-gray-900">This is a member dashboard</p>
 
+<div class="max-w-3xl mx-auto py-10 px-4 space-y-8">
+    {% for post in posts %}
+    <article class="bg-white/60 backdrop-blur shadow-lg rounded-2xl p-6 border border-gray-200 hover:shadow-xl transition duration-300">
+        
+        <!-- Title -->
+        <h1 class="text-3xl font-bold text-gray-900 mb-3">
+            {{ post.title }}
+        </h1>
+
+        <!-- Meta Info -->
+        <div class="flex items-center text-sm text-gray-600 mb-4">
+            <span class="font-medium">{{ post.author }}</span>
+            <span class="mx-2">•</span>
+            <span>{{ post.dateposted }}</span>
+        </div>
+
+        <!-- Divider -->
+        <div class="h-px bg-gray-300/50 mb-4"></div>
+
+        <!-- Content -->
+        <p class="text-gray-700 leading-relaxed">
+            {{ post.content }}
+        </p>
+
+    </article>
+    {% endfor %}
+</div>
+
+
 
 {% for post in posts %}
         <h1>{{ post.title }}</h1>

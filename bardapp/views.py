@@ -10,6 +10,24 @@ posts =[
         'content':'FirstPosted',
         'dateposted': 'August 27,2018'
 
+    },
+
+
+     {
+        'author': 'Blaise Hala',
+        'title': 'Blog Post',
+        'content':'FirstPosted',
+        'dateposted': 'August 27,2018'
+
+    },
+
+
+     {
+        'author': 'Blaise Hala',
+        'title': 'Blog Post',
+        'content':'FirstPosted',
+        'dateposted': 'August 27,2018'
+
     }
 
 ]
