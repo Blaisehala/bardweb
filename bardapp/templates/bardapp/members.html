@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+
+{% extends "bardapp/base.html" %}
+{% block content %}
+
     <button>Members</button>
 <a href="">This is a member Dashboard. View all registered members </a>
 
@@ -13,8 +11,7 @@
         <p>{{ post.content }}</p>
 {% endfor %}
 
+{% endblock content %}
 
-</body>
-</html>
 
 

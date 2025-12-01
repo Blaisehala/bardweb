@@ -33,4 +33,4 @@ def members(request):
 
 def events(request):
     
-    return render (request, 'bardapp/events.html')
+    return render (request, 'bardapp/events.html',{'title':'events'})
