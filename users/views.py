@@ -5,14 +5,16 @@ from django.contrib import messages
 from .forms import UserRegisterForm
 from django.contrib.auth import authenticate,login  
 
-# Create your views here.
+
 
 
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
+        form.request = request  # Pass request to form for rate limiting
         if form.is_valid():
             form.save()
+            username = form.cleaned_data.get('username')
             messages.success(request, 'Account created successfully!')
             return redirect('login')
         else:
