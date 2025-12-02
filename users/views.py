@@ -1,25 +1,45 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-
+# from django.contrib.auth.views import LoginView
+from .forms import UserRegisterForm
+from django.contrib.auth import authenticate,login  
 
 # Create your views here.
 
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Account created successfully!')
-            return redirect('index')
+            return redirect('login')
         else:
             messages.error(request, 'pleasecorrect the errors below')
                              
     else:
-        form = UserCreationForm()
+        form = UserRegisterForm()
     return render (request, 'users/register.html', {'form':form})
 
+
+
+
+
+def user_login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            messages.success(request, f'Welcome back, {user.username}!')
+            return redirect('bard-members')  # Redirect to a success page
+        else:
+            messages.error(request, 'Invalid username or password.')
+    return render(request, 'users/login.html')
 
 
 

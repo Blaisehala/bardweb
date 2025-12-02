@@ -41,12 +41,14 @@
                 <span class="text-gray-600">Welcome to Barding Alumni Association</span>
             </div>
             <div class="flex space-x-4">
-                <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-1 rounded text-sm font-medium transition-colors">
-                    Give
-                </button>
-                <button class="border border-gray-300 hover:border-gray-400 text-gray-700 px-4 py-1 rounded text-sm transition-colors">
-                    Log In
-                </button>
+         <a href="/login" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-1 rounded text-sm font-medium transition-colors">
+  Give
+</a>
+             
+                <a href="{% url 'login' %}" class="border border-gray-300 hover:border-gray-400 text-gray-700 px-4 py-1 rounded text-sm transition-colors">
+  Log In
+</a>
+
             </div>
         </div>
         
@@ -78,7 +80,7 @@
                         <div class="dropdown-menu">
                             <a href="{% url 'users-register' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Join Today</a>
                             <a href="{% url 'bard-members' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Member Benefits</a>
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-orange-100">Member Login </a>
+                            <a href="{% url 'login' %}" class="block px-4 py-2 text-gray-700 hover:bg-orange-100">Member Login </a>
 
                        
                             
