@@ -5,7 +5,7 @@ import string
 
 # Create your models here.
 
-class MemmberNumber(models.Model):
+class MemberNumber(models.Model):
     member_number = models.IntegerField(unique=True, verbose_name="Member Number")
     secret_code = models.CharField(max_length=8, unique=True, verbose_name="Secret Code")
     phone_number = models.CharField(max_length=15, verbose_name="Phone Number")
