@@ -3,7 +3,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 # from django.contrib.auth.views import LoginView
 from .forms import UserRegisterForm
-from django.contrib.auth import authenticate,login  
+from django.contrib.auth import authenticate,login, logout
+from django.contrib.auth.decorators import login_required
+
 
 
 
@@ -43,6 +45,18 @@ def user_login_view(request):
             messages.error(request, 'Invalid username or password.')
     return render(request, 'users/login.html')
 
+
+@login_required
+def user_logout_view(request):
+    """Handle user logout with confirmation"""
+    if request.method == 'POST':
+        username = request.user.username
+        logout(request)
+        messages.success(request, f'Goodbye {username}! You have been logged out successfully.')
+        return redirect('login')
+    
+    # Show confirmation page for GET requests
+    return render(request, 'users/logout.html')
 
 
 
