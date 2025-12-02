@@ -44,6 +44,13 @@ def user_login_view(request):
 
 
 
+def payment_instructions(request):
+    """Display payment instructions page"""
+    return render (request, 'users/payment_instructions.html')
+
+
+
+
 
 
 

@@ -1,12 +1,11 @@
 
+
+
 {% extends "bardapp/base.html" %}
 {% block content %}
 
-
-
-
 {% if form.errors %}
-<div class="bg-red-100 border border-red-300 text-red-700 p-3 rounded-lg mb-4">
+<div class="bg-red-100 border border-red-300 text-red-700 p-3 rounded-lg mb-4 mx-6">
     <ul class="list-disc ml-5 text-sm">
         {% for field in form %}
             {% for error in field.errors %}
@@ -20,70 +19,141 @@
 </div>
 {% endif %}
 
-
-
-
-
 <div class="min-h-screen flex items-center justify-center bg-gray-100 p-6">
     <div class="w-full max-w-md bg-white/70 backdrop-blur rounded-2xl shadow-lg p-8 border border-gray-200">
         
         <!-- Title -->
-        <h2 class="text-3xl font-bold text-gray-900 text-center mb-6">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-2">
             Create an Account
         </h2>
+        <p class="text-center text-sm text-gray-600 mb-6">
+            Member verification required
+        </p>
+
+        <!-- Payment Info Alert -->
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+            <p class="text-sm text-blue-800">
+                <strong>Note:</strong> You need a member number and secret code to register. 
+                <a href="{% url 'payment_instructions' %}" class="underline font-semibold">
+                    How to get your credentials
+                </a>
+            </p>
+        </div>
 
         <!-- Form -->
         <form method="POST" class="space-y-5">
             {% csrf_token %}
 
+            <!-- Member Number -->
+            <div>
+                <label for="id_member_number" class="block text-gray-700 font-medium mb-1">
+                    Member Number <span class="text-red-500">*</span>
+                </label>
+                <input 
+                    type="number" 
+                    name="member_number" 
+                    id="id_member_number"
+                    class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+                    placeholder="e.g., 42"
+                    min="1"
+                    required
+                    value="{{ form.member_number.value|default:'' }}"
+                >
+            </div>
+
+            <!-- Secret Code -->
+            <div>
+                <label for="id_secret_code" class="block text-gray-700 font-medium mb-1">
+                    Secret Code <span class="text-red-500">*</span>
+                </label>
+                <input 
+                    type="text" 
+                    name="secret_code" 
+                    id="id_secret_code"
+                    class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition uppercase font-mono text-lg tracking-wider"
+                    placeholder="ABC123"
+                    maxlength="8"
+                    required
+                    style="text-transform: uppercase;"
+                    value="{{ form.secret_code.value|default:'' }}"
+                >
+                <p class="text-xs text-gray-500 mt-1">
+                    The 6-character code sent to you after payment
+                </p>
+            </div>
+
+            <!-- Phone Number -->
+            <div>
+                <label for="id_phone_number" class="block text-gray-700 font-medium mb-1">
+                    Phone Number <span class="text-red-500">*</span>
+                </label>
+                <input 
+                    type="tel" 
+                    name="phone_number" 
+                    id="id_phone_number"
+                    class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+                    placeholder="0712345678"
+                    required
+                    value="{{ form.phone_number.value|default:'' }}"
+                >
+                <p class="text-xs text-gray-500 mt-1">
+                    Must match the phone number in our records
+                </p>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-gray-200 my-4"></div>
+
             <!-- Username -->
             <div>
-                <label for="username" class="block text-gray-700 font-medium mb-1">Username</label>
+                <label for="id_username" class="block text-gray-700 font-medium mb-1">Username</label>
                 <input 
                     type="text" 
                     name="username" 
-                    id="username"
+                    id="id_username"
                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
-                    placeholder="Enter username"
+                    placeholder="Choose a username"
                     required
+                    value="{{ form.username.value|default:'' }}"
                 >
             </div>
 
             <!-- Email -->
             <div>
-                <label for="email" class="block text-gray-700 font-medium mb-1">Email</label>
+                <label for="id_email" class="block text-gray-700 font-medium mb-1">Email</label>
                 <input 
                     type="email" 
                     name="email" 
-                    id="email"
+                    id="id_email"
                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
                     placeholder="your@email.com"
                     required
+                    value="{{ form.email.value|default:'' }}"
                 >
             </div>
 
             <!-- Password -->
             <div>
-                <label for="password1" class="block text-gray-700 font-medium mb-1">Password</label>
+                <label for="id_password1" class="block text-gray-700 font-medium mb-1">Password</label>
                 <input 
                     type="password" 
                     name="password1" 
-                    id="password1"
+                    id="id_password1"
                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
-                    placeholder="Enter password"
+                    placeholder="Create a password"
                     required
                 >
             </div>
 
             <!-- Confirm Password -->
             <div>
-                <label for="password2" class="block text-gray-700 font-medium mb-1">Confirm Password</label>
+                <label for="id_password2" class="block text-gray-700 font-medium mb-1">Confirm Password</label>
                 <input 
                     type="password" 
                     name="password2" 
-                    id="password2"
+                    id="id_password2"
                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
-                    placeholder="Confirm password"
+                    placeholder="Confirm your password"
                     required
                 >
             </div>
@@ -93,7 +163,7 @@
                 type="submit" 
                 class="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition shadow-md"
             >
-                Register
+                Verify & Register
             </button>
 
         </form>
@@ -109,10 +179,9 @@
     </div>
 </div>
 
-
-
-
 {% endblock content %}
+
+
 
 
 
