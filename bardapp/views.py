@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Post
+from .models import Poster
 
 # Create your views here.
 
@@ -11,7 +11,7 @@ def index(request):
 
 def members(request):
     context = {
-             'posts': Post.objects.all() 
+             'posts': Poster.objects.all() 
         }
     
     return render(request, 'bardapp/members.html', context)
