@@ -37,18 +37,24 @@
  <header class="bg-white shadow-sm border-b-4 border-emerald-500">
         <!-- Top bar -->
          <!-- Top bar -->
+<!-- Top bar -->
 <div class="hidden md:flex justify-between items-center px-6 py-2 bg-gray-50 text-sm max-w-7xl mx-auto">
     <div class="flex space-x-4">
-        <span class="text-gray-600">Welcome to Barding Alumni Association</span>
+        {% if user.is_authenticated %}
+            <span class="text-gray-600">Welcome back, <strong class="text-gray-900">{{ user.username }}</strong>!</span>
+        {% else %}
+            <span class="text-gray-600">Welcome to Barding Alumni Association</span>
+        {% endif %}
     </div>
     <div class="flex space-x-4 items-center">
-        <a href="/donate" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-1 rounded text-sm font-medium transition-colors">
-            Give
-        </a>
-        
         {% if user.is_authenticated %}
+            <!-- Logged In User -->
+            <a href="/donate" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-1 rounded text-sm font-medium transition-colors">
+                Give
+            </a>
+            
             <!-- User Dropdown -->
-            <div class="relative dropdown">
+            <div class="dropdown relative">
                 <button class="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition border border-gray-300 hover:border-gray-400 rounded px-3 py-1">
                     <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
                         {{ user.username|slice:":1"|upper }}
@@ -59,11 +65,23 @@
                     </svg>
                 </button>
                 <div class="dropdown-menu right-0">
-                    <a href="{% url 'bard-members' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                    <a href="{% url 'member_dashboard' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                        <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                        Dashboard
+                    </a>
+                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                         <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                         </svg>
                         My Profile
+                    </a>
+                    <a href="{% url 'alumni_directory' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                        <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        Alumni Directory
                     </a>
                     <hr class="my-1">
                     <a href="{% url 'logout' %}" class="block px-4 py-2 text-red-600 hover:bg-red-50">
@@ -75,7 +93,10 @@
                 </div>
             </div>
         {% else %}
-            <!-- Not logged in -->
+            <!-- Not Logged In -->
+            <a href="/donate" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-1 rounded text-sm font-medium transition-colors">
+                Give
+            </a>
             <a href="{% url 'login' %}" class="border border-gray-300 hover:border-gray-400 text-gray-700 px-4 py-1 rounded text-sm transition-colors">
                 Log In
             </a>
@@ -85,7 +106,6 @@
         {% endif %}
     </div>
 </div>
-       
 
          
         
@@ -115,11 +135,16 @@
                             </svg>
                         </button>
                         <div class="dropdown-menu">
-                            <a href="{% url 'users-register' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Join Today</a>
-                            <a href="{% url 'bard-members' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Member Benefits</a>
-                            <a href="{% url 'login' %}" class="block px-4 py-2 text-gray-700 hover:bg-orange-100">Member Login </a>
-
-                       
+                          {% if not user.is_authenticated %}
+            <a href="{% url 'users-register' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Join Today</a>
+        {% endif %}
+        <a href="{% url 'bard-members' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Member Benefits</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'member_dashboard' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Member Dashboard</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="block px-4 py-2 text-gray-700 hover:bg-orange-100">Member Login</a>
+        {% endif %}
+                            
                             
 
                         </div>
@@ -255,8 +280,9 @@
                     </button>
                     
                     <!-- Mobile CTA buttons -->
-                     
-<div class="px-3 pt-4 space-y-2">
+
+
+     <div class="px-3 pt-4 space-y-2">
     <a href="/donate" class="block w-full bg-orange-500 hover:bg-orange-600 text-white py-3 px-4 rounded-lg font-medium transition-colors text-center">
         Give
     </a>
@@ -267,6 +293,9 @@
             <p class="text-sm text-gray-600">Logged in as</p>
             <p class="font-semibold text-gray-900">{{ user.username }}</p>
         </div>
+        <a href="{% url 'member_dashboard' %}" class="block w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium transition-colors text-center">
+            Dashboard
+        </a>
         <a href="{% url 'logout' %}" class="block w-full bg-red-600 hover:bg-red-700 text-white py-3 px-4 rounded-lg font-medium transition-colors text-center flex items-center justify-center">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
@@ -282,7 +311,8 @@
             Register
         </a>
     {% endif %}
-</div>
+</div>              
+
                     
                 </div>
             </div>

@@ -14,6 +14,10 @@ from django.utils import timezone
 
 
 def register(request):
+
+    if request.user.is_authenticated:
+        return redirect ('memeber_dashboard')
+    
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         form.request = request  # Pass request to form for rate limiting
@@ -23,7 +27,7 @@ def register(request):
             messages.success(request, 'Account created successfully!')
             return redirect('login')
         else:
-            messages.error(request, 'pleasecorrect the errors below')
+            messages.error(request, 'please correct the errors below')
                              
     else:
         form = UserRegisterForm()
@@ -34,6 +38,10 @@ def register(request):
 
 
 def user_login_view(request):
+
+    if request.user.is_authenticated:
+        return redirect ('memeber_dashboard')
+    
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -56,7 +64,7 @@ def user_logout_view(request):
         username = request.user.username
         logout(request)
         messages.success(request, f'Goodbye {username}! You have been logged out successfully.')
-        return redirect('login')
+        return redirect('index')
     
     # Show confirmation page for GET requests
     return render(request, 'users/logout.html')
