@@ -121,7 +121,7 @@
         <nav class="px-4 sm:px-6 py-4 max-w-7xl mx-auto">
             <div class="flex justify-between items-center">
                 <!-- Logo -->
-                <div class="flex items-center">
+                <!-- <div class="flex items-center">
                     <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-400 to-emerald-500 rounded-lg flex items-center justify-center mr-2 sm:mr-3">
                         <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -131,7 +131,25 @@
                         <div class="text-lg sm:text-2xl font-bold text-gray-900">Barding Alumni</div>
                         <div class="text-xs sm:text-sm text-emerald-600 font-medium">Together We shine brighter</div>
                     </div>
+                </div> -->
+                {% load static %}
+
+<header class="bg-white shadow-sm border-b-4 border-emerald-500">
+    <nav class="px-4 sm:px-6 py-4 max-w-7xl mx-auto">
+        <div class="flex justify-between items-center">
+            <!-- Logo with Image -->
+            <a href="{% url 'index' %}" class="flex items-center">
+                <img src="{% static 'images/logo2.png' %}" alt="Barding Alumni Logo" class="w-10 h-10 sm:w-12 sm:h-12 mr-2 sm:mr-3">
+                <div>
+                    <div class="text-lg sm:text-2xl font-bold text-gray-900">Barding Alumni</div>
+                    <div class="text-xs sm:text-sm text-emerald-600 font-medium">Together We shine brighter</div>
                 </div>
+            </a>
+            
+            <!-- Rest of navigation -->
+        </div>
+    </nav>
+</header>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex items-center space-x-8">
@@ -362,10 +380,17 @@
     <footer class="footer-main">
         <div class="max-w-7xl mx-auto px-6">
             <!-- Logo -->
+             
             <div class="logo-container">
-                <div class="logo-flag">
+                <!-- <div class="logo-flag">
+                     <img src="{% static 'images/logo.jpeg' %}" alt="Barding Alumni Logo" class="w-10 h-10 sm:w-12 sm:h-12 mr-2 sm:mr-3">
                     <span class="logo-letter">B</span>
-                </div>
+                </div> -->
+                 <!-- <img src="{% static 'images/logo.jpeg' %}" alt="Barding Alumni Logo" class="w-10 h-10 sm:w-12 sm:h-12 mr-2 sm:mr-3"> -->
+                  <img src="{% static 'images/logo.jpeg' %}" 
+     alt="Barding Alumni Logo" 
+     class="w-10 h-10 sm:w-12 sm:h-12 mr-2 sm:mr-3 rounded-full">
+
                 <span class="logo-text">BARDING ALUMNI</span>
             </div>
 
