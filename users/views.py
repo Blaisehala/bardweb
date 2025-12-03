@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 # from django.contrib.auth.views import LoginView
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm,UserUpdateForm, AlumniProfileUpdateForm
 from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth.decorators import login_required
 from . models import AlumniProfile, Post, Event, Comment
@@ -222,6 +222,61 @@ def rsvp_event(request, event_id):
             messages.error(request, 'This event is full.')
     
     return redirect('event_list')
+
+@login_required
+def profile_edit(request):
+    """Edit user profile"""
+    
+    # Get or create profile
+    profile, created = AlumniProfile.objects.get_or_create(user=request.user)
+    
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = AlumniProfileUpdateForm(request.POST, request.FILES, instance=profile)
+        
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile has been updated successfully!')
+            return redirect('profile_view', username=request.user.username)
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = AlumniProfileUpdateForm(instance=profile)
+    
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form,
+        'profile': profile,
+    }
+    
+    return render(request, 'users/profile_edit.html', context)
+
+
+@login_required
+def profile_view(request, username):
+    """View a user's profile"""
+    from django.contrib.auth.models import User
+    user = get_object_or_404(User, username=username)
+    profile = get_object_or_404(AlumniProfile, user=user)
+    
+    # Get user's recent posts
+    recent_posts = Post.objects.filter(author=user).order_by('-created_at')[:5]
+    
+    # Get user's upcoming events
+    upcoming_events = Event.objects.filter(attendees=user, date__gte=timezone.now()).order_by('date')[:3]
+    
+    context = {
+        'profile_user': user,
+        'profile': profile,
+        'recent_posts': recent_posts,
+        'upcoming_events': upcoming_events,
+        'is_own_profile': request.user == user,
+    }
+    
+    return render(request, 'users/profile_view.html', context)
+
 
 
 # username = form.cleaned_data.get('username')
