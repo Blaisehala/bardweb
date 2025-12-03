@@ -5,14 +5,119 @@ from .models import MemberNumber, AlumniProfile
 from django.core.cache import cache
 
 
-class UserRegisterForm (UserCreationForm):
-    email = forms.EmailField()
-
-
+class UserRegisterForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+    member_number = forms.IntegerField(
+        required=True,
+        label="Member Number",
+        help_text="Enter your assigned member number"
+    )
+    secret_code = forms.CharField(
+        max_length=8,
+        required=True,
+        label="Secret Code",
+        help_text="Enter the 6-character secret code sent to you",
+        widget=forms.TextInput(attrs={'style': 'text-transform: uppercase;'})
+    )
+    phone_number = forms.CharField(
+        max_length=10,
+        required=True,
+        label="Phone Number",
+        help_text="Enter your phone number (used for payment)"
+    )
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2', 'member_number', 'secret_code', 'phone_number']
+
+    def clean_phone_number(self):
+        phone = self.cleaned_data.get('phone_number').strip()
+        # Remove spaces and standardize format
+        phone = phone.replace(' ', '').replace('-', '')
+        return phone
+
+    def clean_secret_code(self):
+        code = self.cleaned_data.get('secret_code').strip().upper()
+        return code
+
+    def clean(self):
+        cleaned_data = super().clean()
+        
+        # 🔒 SECURITY: Rate limiting - prevent brute force
+        ip = self.request.META.get('REMOTE_ADDR') if hasattr(self, 'request') else 'unknown'
+        cache_key = f'registration_attempts_{ip}'
+        
+        attempts = cache.get(cache_key, 0)
+        if attempts >= 5:
+            raise forms.ValidationError(
+                "Too many failed attempts. Please try again in 30 minutes or contact support."
+            )
+        
+        member_number = cleaned_data.get('member_number')
+        secret_code = cleaned_data.get('secret_code')
+        phone_number = cleaned_data.get('phone_number')
+
+        if member_number and secret_code and phone_number:
+            try:
+                # 🔒 CRITICAL: All 3 must match exactly
+                member = MemberNumber.objects.get(
+                    member_number=member_number,
+                    secret_code=secret_code,
+                    phone_number=phone_number
+                )
+            except MemberNumber.DoesNotExist:
+                # Increment failed attempts
+                cache.set(cache_key, attempts + 1, 1800)  # 30 minutes
+                
+                raise forms.ValidationError(
+                    "Invalid credentials. Please verify your member number, secret code, and phone number. "
+                    "All three must match our records exactly."
+                )
+
+            # 🔒 CRITICAL CHECK 1: Already registered?
+            if member.is_registered:
+                cache.set(cache_key, attempts + 1, 1800)
+                raise forms.ValidationError(
+                    "This member number has already been used to register an account. "
+                    "Each member number can only be used once."
+                )
+            
+            # 🔒 CRITICAL CHECK 2: Already linked to a user?
+            if member.registered_user is not None:
+                cache.set(cache_key, attempts + 1, 1800)
+                raise forms.ValidationError(
+                    "This member number is already linked to an account."
+                )
+
+            # Clear attempts on success
+            cache.delete(cache_key)
+            
+            # Store for save()
+            self.member = member
+
+        return cleaned_data
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email = self.cleaned_data['email']
+        
+        if commit:
+            user.save()
+            
+            # 🔒 CRITICAL: Mark as registered IMMEDIATELY
+            member = self.member
+            member.is_registered = True
+            member.registered_user = user
+            from django.utils import timezone
+            member.registered_at = timezone.now()
+            member.save()
+            
+            # Link to AlumniProfile
+            profile, created = AlumniProfile.objects.get_or_create(user=user)
+            profile.member_number = member
+            profile.save()
+        
+        return user
 
 
 class UserUpdateForm(forms.ModelForm):

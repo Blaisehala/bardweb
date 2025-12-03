@@ -14,24 +14,42 @@ from django.utils import timezone
 
 
 def register(request):
-
     if request.user.is_authenticated:
-        return redirect ('member_dashboard')
+        return redirect('member_dashboard')
     
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         form.request = request  # Pass request to form for rate limiting
+        
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, 'Account created successfully!')
-            return redirect('login')
+            # 🔒 SECURITY: Use atomic transaction to prevent race conditions
+            from django.db import transaction
+            
+            try:
+                with transaction.atomic():
+                    # Double-check member hasn't been registered in another request
+                    member = form.member
+                    member.refresh_from_db()  # Get latest state from database
+                    
+                    if member.is_registered or member.registered_user is not None:
+                        messages.error(request, 'This member number has already been registered.')
+                        return redirect('register')
+                    
+                    # Save the user
+                    form.save()
+                    
+                    username = form.cleaned_data.get('username')
+                    messages.success(request, f'Account created successfully for {username}! You can now log in.')
+                    return redirect('login')
+            except Exception as e:
+                messages.error(request, 'Registration failed. Please try again or contact support.')
+                return redirect('register')
         else:
-            messages.error(request, 'please correct the errors below')
-                             
+            messages.error(request, 'Please correct the errors below.')
     else:
         form = UserRegisterForm()
-    return render (request, 'users/register.html', {'form':form})
+    
+    return render(request, 'users/register.html', {'form': form})
 
 
 

@@ -6,6 +6,8 @@ from django.utils.html import format_html
 @admin.register(MemberNumber)
 class MemberNumberAdmin(admin.ModelAdmin):
     list_display = [
+        'first_name',
+        'last_name',
         'member_number',
         'secret_code_display',
         'phone_number', 
@@ -16,12 +18,12 @@ class MemberNumberAdmin(admin.ModelAdmin):
     ]
 
     list_filter = ['is_registered', 'payment_date']
-    search_fields = ['member_number', 'phone_number', 'secret_code', 'registered_user__username']
+    search_fields = ['first_name','last_name', 'member_number', 'phone_number', 'secret_code', 'registered_user__username']
     readonly_fields = ['secret_code', 'registered_at', 'created_at']
 
     fieldsets = (
         ('Member Information', {
-            'fields': ('member_number', 'secret_code', 'phone_number', 'amount_paid', 'payment_date')
+            'fields': ('first_name','last_name', 'member_number', 'secret_code', 'phone_number', 'amount_paid', 'payment_date')
         }),
         ('Registration Status', {
             'fields': ('is_registered', 'registered_user', 'registered_at')
