@@ -16,7 +16,7 @@ from django.utils import timezone
 def register(request):
 
     if request.user.is_authenticated:
-        return redirect ('memeber_dashboard')
+        return redirect ('member_dashboard')
     
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
