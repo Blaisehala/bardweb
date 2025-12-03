@@ -33,7 +33,7 @@
                         <p class="text-gray-600 text-sm">{{ profile.current_company }}</p>
                         {% endif %}
                         
-                        <a href="#" class="mt-4 block text-blue-600 hover:text-blue-700 font-medium text-sm">
+                        <a href="{% url 'profile_edit' %}" class="mt-4 block text-blue-600 hover:text-blue-700 font-medium text-sm">
                             Edit Profile →
                         </a>
                     </div>

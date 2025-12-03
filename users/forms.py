@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from .models import MemberNumber, AlumniProfile
+from django.core.cache import cache
 
 
 class UserRegisterForm (UserCreationForm):
@@ -47,10 +49,6 @@ class AlumniProfileUpdateForm(forms.ModelForm):
             'bio',
             'year_graduated',
             'current_location',
-            'current_company',
-            'job_title',
-            'industry',
-            'linkedin_url',
             'website',
             'twitter_handle',
             'is_mentor',
@@ -65,18 +63,7 @@ class AlumniProfileUpdateForm(forms.ModelForm):
             'current_location': forms.TextInput(attrs={
                 'placeholder': 'e.g., Nairobi, Kenya'
             }),
-            'current_company': forms.TextInput(attrs={
-                'placeholder': 'e.g., Google'
-            }),
-            'job_title': forms.TextInput(attrs={
-                'placeholder': 'e.g., Software Engineer'
-            }),
-            'industry': forms.TextInput(attrs={
-                'placeholder': 'e.g., Technology'
-            }),
-            'linkedin_url': forms.URLInput(attrs={
-                'placeholder': 'https://linkedin.com/in/yourprofile'
-            }),
+            
             'website': forms.URLInput(attrs={
                 'placeholder': 'https://yourwebsite.com'
             }),
