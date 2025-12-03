@@ -3,7 +3,7 @@
 
 
 
-
+{% load static %}
     
 
                                                        <!-- Modal Background -->
@@ -66,9 +66,7 @@
         }
     </script>
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
+       
     </style>
 </head>
 <body class="bg-slate-50">
@@ -124,6 +122,7 @@
                     <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1920&h=1080&fit=crop&q=80" 
                          alt="Sports Excellence" 
                          class="w-full h-full object-cover">
+
                     <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/45 flex items-center justify-start px-12 md:px-20">
                         <div class="max-w-[650px] text-white" style="text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">
                             <h2 class="font-heading text-4xl md:text-5xl font-bold mb-5 leading-tight" style="text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);">
@@ -153,9 +152,10 @@
             <!-- Slide 3: Alumni Network -->
             <div class="hero-carousel-slide absolute inset-0 opacity-0 transition-opacity duration-800 ease-in-out pointer-events-none" data-slide="2">
                 <div class="relative w-full h-full">
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&h=1080&fit=crop&q=80" 
+                    <img src="{% static 'images/pic1.jpg' %}" 
                          alt="Alumni Network" 
                          class="w-full h-full object-cover">
+
                     <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/45 flex items-center justify-start px-12 md:px-20">
                         <div class="max-w-[650px] text-white" style="text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">
                             <h2 class="font-heading text-4xl md:text-5xl font-bold mb-5 leading-tight" style="text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);">
