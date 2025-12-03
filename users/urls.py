@@ -1,6 +1,8 @@
 
 
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
@@ -19,4 +21,13 @@ urlpatterns = [
     path('events/', views.event_list, name='event_list'),
     path('events/<int:event_id>/rsvp/', views.rsvp_event, name='rsvp_event'),
 
+    # Profile
+    path('profile/edit/', views.profile_edit, name='profile_edit'),
+    path('profile/<str:username>/', views.profile_view, name='profile_view'),
 ]
+
+# Serve media files in development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
