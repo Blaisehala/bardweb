@@ -8,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 from . models import AlumniProfile, Post, Event, Comment
 from django.db.models import Count, Q
 from django.utils import timezone
+from .models import Donation
+from .forms import DonationForm
+from django.db.models import Sum
 
 
 
@@ -297,4 +300,65 @@ def profile_view(request, username):
 
 
 
+def donate(request):
+    """Donation page with M-Pesa and Card options"""
+    
+    if request.method == 'POST':
+        form = DonationForm(request.POST)
+        
+        if form.is_valid():
+            donation = form.save(commit=False)
+            
+            # Link to user if logged in
+            if request.user.is_authenticated:
+                donation.donor = request.user
+            
+            donation.save()
+            
+            # TODO: Integrate with M-Pesa API or Payment Gateway
+            # For now, we'll just save and show success
+            
+            messages.success(
+                request, 
+                f'Thank you for your donation of KES {donation.amount}! '
+                f'You will receive a confirmation email shortly.'
+            )
+            
+            return redirect('donation_success', donation_id=donation.id)
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = DonationForm()
+        
+        # Pre-fill form if user is logged in
+        if request.user.is_authenticated:
+            form.initial = {
+                'donor_name': f"{request.user.first_name} {request.user.last_name}".strip() or request.user.username,
+                'donor_email': request.user.email,
+            }
+    
+    # Get donation statistics
+    total_donations = Donation.objects.filter(is_completed=True).aggregate(Sum('amount'))['amount__sum'] or 0
+    total_donors = Donation.objects.filter(is_completed=True).values('donor_email').distinct().count()
+    recent_donations = Donation.objects.filter(is_completed=True, is_anonymous=False).order_by('-created_at')[:5]
+    
+    context = {
+        'form': form,
+        'total_donations': total_donations,
+        'total_donors': total_donors,
+        'recent_donations': recent_donations,
+    }
+    
+    return render(request, 'users/donate.html', context)
+
+
+def donation_success(request, donation_id):
+    """Donation success confirmation page"""
+    donation = get_object_or_404(Donation, id=donation_id)
+    
+    context = {
+        'donation': donation,
+    }
+    
+    return render(request, 'users/donation_success.html', context)
 # username = form.cleaned_data.get('username')
