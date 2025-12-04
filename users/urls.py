@@ -24,6 +24,9 @@ urlpatterns = [
     # Profile
     path('profile/edit/', views.profile_edit, name='profile_edit'),
     path('profile/<str:username>/', views.profile_view, name='profile_view'),
+
+    path('donate/',views. donate, name='donate'),
+    path('donation/success/<int:donation_id>/',views. donation_success, name='donation_success'),
 ]
 
 # Serve media files in development

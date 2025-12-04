@@ -1,0 +1,405 @@
+{% extends "bardapp/base.html" %}
+{% load static %}
+
+{% block title %}Donate - Support Our Alumni Community{% endblock %}
+
+{% block content %}
+
+<style>
+    .payment-option {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .payment-option.active {
+        border-color: #f97316;
+        background-color: #fff7ed;
+        box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+    }
+    
+    .cause-card {
+        transition: all 0.3s ease;
+    }
+    
+    .cause-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+    
+    .quick-amount {
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+    
+    .quick-amount:hover {
+        transform: scale(1.05);
+    }
+    
+    .quick-amount.selected {
+        background-color: #f97316;
+        color: white;
+        border-color: #f97316;
+    }
+</style>
+
+<!-- Hero Section -->
+<div class="bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center">
+            <h1 class="text-5xl font-bold mb-4">Make a Difference Today</h1>
+            <p class="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
+                Your generosity helps build a stronger community and brighter future for current and future students
+            </p>
+            
+            <!-- Impact Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12">
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                    <div class="text-4xl font-bold">KES {{ total_donations|floatformat:0 }}</div>
+                    <div class="text-orange-100 mt-2">Total Raised</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                    <div class="text-4xl font-bold">{{ total_donors }}</div>
+                    <div class="text-orange-100 mt-2">Generous Donors</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                    <div class="text-4xl font-bold">6</div>
+                    <div class="text-orange-100 mt-2">Active Projects</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="bg-gray-50 py-12">
+    <div class="max-w-7xl mx-auto px-4">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Left Column - Donation Form -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Complete Your Donation</h2>
+                    
+                    <form method="POST" id="donationForm">
+                        {% csrf_token %}
+                        
+                        <!-- Quick Amount Selection -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">Quick Select Amount</label>
+                            <div class="grid grid-cols-3 gap-3">
+                                <button type="button" onclick="selectAmount(1000)" class="quick-amount border-2 border-gray-300 rounded-lg py-3 font-bold text-gray-700 hover:border-orange-500">
+                                    KES 1,000
+                                </button>
+                                <button type="button" onclick="selectAmount(5000)" class="quick-amount border-2 border-gray-300 rounded-lg py-3 font-bold text-gray-700 hover:border-orange-500">
+                                    KES 5,000
+                                </button>
+                                <button type="button" onclick="selectAmount(10000)" class="quick-amount border-2 border-gray-300 rounded-lg py-3 font-bold text-gray-700 hover:border-orange-500">
+                                    KES 10,000
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Custom Amount -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">{{ form.amount.label }}</label>
+                            {{ form.amount }}
+                            {% if form.amount.errors %}
+                                <p class="text-red-600 text-sm mt-1">{{ form.amount.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Select Cause -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">{{ form.cause.label }}</label>
+                            {{ form.cause }}
+                            {% if form.cause.errors %}
+                                <p class="text-red-600 text-sm mt-1">{{ form.cause.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Donor Information -->
+                        <div class="border-t pt-6 mb-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Your Information</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">{{ form.donor_name.label }}</label>
+                                    {{ form.donor_name }}
+                                    {% if form.donor_name.errors %}
+                                        <p class="text-red-600 text-sm mt-1">{{ form.donor_name.errors.0 }}</p>
+                                    {% endif %}
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">{{ form.donor_phone.label }}</label>
+                                    {{ form.donor_phone }}
+                                    {% if form.donor_phone.errors %}
+                                        <p class="text-red-600 text-sm mt-1">{{ form.donor_phone.errors.0 }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">{{ form.donor_email.label }}</label>
+                                {{ form.donor_email }}
+                                {% if form.donor_email.errors %}
+                                    <p class="text-red-600 text-sm mt-1">{{ form.donor_email.errors.0 }}</p>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">{{ form.message.label }}</label>
+                                {{ form.message }}
+                            </div>
+                            
+                            <div class="flex items-center">
+                                {{ form.is_anonymous }}
+                                <label class="ml-2 text-sm text-gray-700">{{ form.is_anonymous.label }}</label>
+                            </div>
+                        </div>
+                        
+                        <!-- Payment Method Selection -->
+                        <div class="border-t pt-6 mb-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Payment Method</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                                <!-- M-Pesa Option -->
+                                <label class="payment-option border-2 border-gray-300 rounded-xl p-6 cursor-pointer" onclick="selectPaymentMethod('mpesa')">
+                                    <input type="radio" name="payment_method" value="mpesa" class="hidden" required>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                                <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                                                </svg>
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="font-bold text-gray-900">M-Pesa</div>
+                                                <div class="text-sm text-gray-500">Pay with M-Pesa</div>
+                                            </div>
+                                        </div>
+                                        <div class="payment-check hidden">
+                                            <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </label>
+                                
+                                <!-- Card Option -->
+                                <label class="payment-option border-2 border-gray-300 rounded-xl p-6 cursor-pointer" onclick="selectPaymentMethod('card')">
+                                    <input type="radio" name="payment_method" value="card" class="hidden" required>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                                <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+                                                </svg>
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="font-bold text-gray-900">Credit/Debit Card</div>
+                                                <div class="text-sm text-gray-500">Visa, Mastercard</div>
+                                            </div>
+                                        </div>
+                                        <div class="payment-check hidden">
+                                            <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <!-- M-Pesa Details (shown when M-Pesa selected) -->
+                            <div id="mpesa-details" class="hidden bg-green-50 border border-green-200 rounded-xl p-6 mb-4">
+                                <h4 class="font-bold text-gray-900 mb-3">M-Pesa Details</h4>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">{{ form.mpesa_phone.label }}</label>
+                                    {{ form.mpesa_phone }}
+                                    <p class="text-xs text-gray-500 mt-1">Format: 2547XXXXXXXX</p>
+                                </div>
+                                <div class="mt-4 p-4 bg-white rounded-lg">
+                                    <p class="text-sm text-gray-700">
+                                        <strong>📱 How it works:</strong><br>
+                                        1. Enter your M-Pesa number above<br>
+                                        2. Click "Complete Donation"<br>
+                                        3. You'll receive an M-Pesa prompt on your phone<br>
+                                        4. Enter your PIN to complete the donation
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Card Details (shown when Card selected) -->
+                            <div id="card-details" class="hidden bg-blue-50 border border-blue-200 rounded-xl p-6 mb-4">
+                                <h4 class="font-bold text-gray-900 mb-3">Card Payment</h4>
+                                <p class="text-sm text-gray-700 mb-4">
+                                    You'll be redirected to our secure payment partner to complete your donation.
+                                </p>
+                                <div class="flex items-center space-x-4">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" class="h-8">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="h-8">
+                                    <span class="text-xs text-gray-500">Secured by SSL</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <button type="submit" class="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white py-4 px-6 rounded-xl font-bold text-lg shadow-lg transition-all transform hover:scale-105">
+                            Complete Donation
+                        </button>
+                        
+                        <p class="text-center text-sm text-gray-500 mt-4">
+                            🔒 Your donation is secure and tax-deductible
+                        </p>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Right Column - Impact & Recent Donors -->
+            <div class="space-y-6">
+                
+                <!-- Impact Statement -->
+                <div class="bg-gradient-to-br from-orange-500 to-red-500 text-white rounded-2xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4">Your Impact</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">🎓</span>
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-bold">KES 5,000</div>
+                                <div class="text-orange-100 text-sm">Supports 1 student for a month</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">📚</span>
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-bold">KES 10,000</div>
+                                <div class="text-orange-100 text-sm">Provides 50 library books</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">🏗️</span>
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-bold">KES 50,000</div>
+                                <div class="text-orange-100 text-sm">Contributes to infrastructure</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Donors -->
+                <div class="bg-white rounded-2xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Recent Donors</h3>
+                    <div class="space-y-3">
+                        {% for donation in recent_donations %}
+                        <div class="flex items-center justify-between pb-3 border-b">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white font-bold">
+                                    {{ donation.donor_name|slice:":1"|upper }}
+                                </div>
+                                <div class="ml-3">
+                                    <div class="font-semibold text-sm text-gray-900">{{ donation.donor_name }}</div>
+                                    <div class="text-xs text-gray-500">{{ donation.created_at|timesince }} ago</div>
+                                </div>
+                            </div>
+                            <div class="font-bold text-orange-600">KES {{ donation.amount|floatformat:0 }}</div>
+                        </div>
+                        {% empty %}
+                        <p class="text-gray-500 text-sm text-center py-4">Be the first to donate!</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <!-- Tax Info -->
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                        </svg>
+                        <div class="ml-3">
+                            <h4 class="font-bold text-gray-900 text-sm">Tax Deductible</h4>
+                            <p class="text-xs text-gray-600 mt-1">
+                                Your donation is tax-deductible. You'll receive a receipt via email.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Quick amount selection
+    function selectAmount(amount) {
+        // Update input field
+        document.querySelector('input[name="amount"]').value = amount;
+        
+        // Update UI
+        document.querySelectorAll('.quick-amount').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+        event.target.classList.add('selected');
+    }
+    
+    // Payment method selection
+    function selectPaymentMethod(method) {
+        // Update radio buttons
+        document.querySelectorAll('input[name="payment_method"]').forEach(radio => {
+            radio.checked = radio.value === method;
+        });
+        
+        // Update UI
+        document.querySelectorAll('.payment-option').forEach(option => {
+            option.classList.remove('active');
+            option.querySelector('.payment-check').classList.add('hidden');
+        });
+        
+        event.currentTarget.classList.add('active');
+        event.currentTarget.querySelector('.payment-check').classList.remove('hidden');
+        
+        // Show/hide payment details
+        document.getElementById('mpesa-details').classList.add('hidden');
+        document.getElementById('card-details').classList.add('hidden');
+        
+        if (method === 'mpesa') {
+            document.getElementById('mpesa-details').classList.remove('hidden');
+        } else if (method === 'card') {
+            document.getElementById('card-details').classList.remove('hidden');
+        }
+    }
+    
+    // Form validation
+    document.getElementById('donationForm').addEventListener('submit', function(e) {
+        const amount = document.querySelector('input[name="amount"]').value;
+        const paymentMethod = document.querySelector('input[name="payment_method"]:checked');
+        
+        if (!amount || amount < 100) {
+            e.preventDefault();
+            alert('Please enter a donation amount of at least KES 100');
+            return false;
+        }
+        
+        if (!paymentMethod) {
+            e.preventDefault();
+            alert('Please select a payment method');
+            return false;
+        }
+        
+        if (paymentMethod.value === 'mpesa') {
+const mpesaPhone = document.querySelector('input[name="mpesa_phone"]').value;
+if (!mpesaPhone) {
+e.preventDefault();
+alert('Please enter your M-Pesa phone number');
+return false;
+}
+}
+});
+</script>
+{% endblock %}

@@ -1,7 +1,7 @@
 # admin.py
 
 from django.contrib import admin
-from .models import MemberNumber, AlumniProfile, Post, Comment, Event
+from .models import MemberNumber, AlumniProfile, Post, Comment, Event,Donation
 from django.utils.html import format_html
 
 @admin.register(MemberNumber)
@@ -112,3 +112,27 @@ class EventAdmin(admin.ModelAdmin):
     list_filter = ['event_type', 'date', 'is_virtual']
     search_fields = ['title', 'description', 'location']
     readonly_fields = ['created_at']
+
+
+
+@admin.register(Donation)
+class DonationAdmin(admin.ModelAdmin):
+    list_display = ['donor_name', 'amount', 'cause', 'payment_method', 'is_completed', 'created_at']
+    list_filter = ['is_completed', 'payment_method', 'cause', 'created_at']
+    search_fields = ['donor_name', 'donor_email', 'donor_phone', 'transaction_id']
+    readonly_fields = ['created_at', 'completed_at']
+    
+    fieldsets = (
+        ('Donor Information', {
+            'fields': ('donor', 'donor_name', 'donor_email', 'donor_phone', 'is_anonymous')
+        }),
+        ('Donation Details', {
+            'fields': ('amount', 'cause', 'message')
+        }),
+        ('Payment Information', {
+            'fields': ('payment_method', 'mpesa_phone', 'transaction_id', 'is_completed', 'completed_at')
+        }),
+        ('Timestamps', {
+            'fields': ('created_at',)
+        }),
+    )
