@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import MemberNumber, AlumniProfile
+from .models import MemberNumber, AlumniProfile,Donation
 from django.core.cache import cache
 
 
@@ -204,3 +204,74 @@ class AlumniProfileUpdateForm(forms.ModelForm):
                 field.widget.attrs.update({
                     'class': 'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500'
                 })
+
+
+
+
+
+class DonationForm(forms.ModelForm):
+    """Form for making donations"""
+    
+    class Meta:
+        model = Donation
+        fields = [
+            'donor_name', 
+            'donor_email', 
+            'donor_phone',
+            'amount',
+            'cause',
+            'message',
+            'payment_method',
+            'mpesa_phone',
+            'is_anonymous'
+        ]
+        
+        widgets = {
+            'donor_name': forms.TextInput(attrs={
+                'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none',
+                'placeholder': 'Your Full Name'
+            }),
+            'donor_email': forms.EmailInput(attrs={
+                'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none',
+                'placeholder': 'your.email@example.com'
+            }),
+            'donor_phone': forms.TextInput(attrs={
+                'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none',
+                'placeholder': '0712345678'
+            }),
+            'amount': forms.NumberInput(attrs={
+                'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none',
+                'placeholder': 'Enter amount',
+                'min': '100'
+            }),
+            'cause': forms.Select(attrs={
+                'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none'
+            }),
+            'message': forms.Textarea(attrs={
+                'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none',
+                'rows': 3,
+                'placeholder': 'Optional: Add a message or dedication'
+            }),
+            'payment_method': forms.RadioSelect(attrs={
+                'class': 'payment-method-radio'
+            }),
+            'mpesa_phone': forms.TextInput(attrs={
+                'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none',
+                'placeholder': '2547XXXXXXXX'
+            }),
+            'is_anonymous': forms.CheckboxInput(attrs={
+                'class': 'w-4 h-4 text-orange-600 rounded focus:ring-orange-500'
+            })
+        }
+        
+        labels = {
+            'donor_name': 'Full Name',
+            'donor_email': 'Email Address',
+            'donor_phone': 'Phone Number',
+            'amount': 'Donation Amount (KES)',
+            'cause': 'Select Cause',
+            'message': 'Message (Optional)',
+            'payment_method': 'Payment Method',
+            'mpesa_phone': 'M-Pesa Phone Number',
+            'is_anonymous': 'Make this donation anonymous'
+        }
