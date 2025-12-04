@@ -21,3 +21,9 @@ def members(request):
 def events(request):
     
     return render (request, 'bardapp/events.html',{'title':'events'})
+
+
+
+def memberbenefits(request):
+    """Display payment instructions page"""
+    return render (request, 'bardapp/memberbenefits.html')

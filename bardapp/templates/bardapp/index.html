@@ -4,111 +4,132 @@
 
 
 {% load static %}
-    
 
-                                                       <!-- Modal Background -->
-  <div id="membershipModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center">
+
+<!-- Modal Background -->
+<div id="membershipModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center">
     <!-- Modal Card -->
     <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 relative animate-fade-in-down">
-      <!-- Close Button -->
-      <button onclick="document.getElementById('membershipModal').classList.add('hidden')" 
-              class="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-xl">&times;</button>
+        <!-- Close Button -->
+        <button onclick="document.getElementById('membershipModal').classList.add('hidden')"
+            class="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-xl">&times;</button>
 
-      <!-- Card Content -->
-      <div class="text-center">
-        <img src="https://img.freepik.com/free-vector/mobile-payment-concept-illustration_114360-5058.jpg" 
-             alt="M-Pesa" class="w-40 mx-auto mb-4 rounded-xl shadow-md" />
+        <!-- Card Content -->
+        <div class="text-center">
+            <img src="https://img.freepik.com/free-vector/mobile-payment-concept-illustration_114360-5058.jpg"
+                alt="M-Pesa" class="w-40 mx-auto mb-4 rounded-xl shadow-md" />
 
-        <h2 class="text-2xl font-bold text-green-700 mb-2">Join as a Member</h2>
-        <p class="text-gray-600 mb-4">Pay using M-Pesa <strong>Pochi la Biashara</strong> to the number below:</p>
+            <h2 class="text-2xl font-bold text-green-700 mb-2">Join as a Member</h2>
+            <p class="text-gray-600 mb-4">Pay using M-Pesa <strong>Pochi la Biashara</strong> to the number below:</p>
 
-        <div class="bg-green-100 text-green-800 font-semibold text-xl py-3 rounded-lg shadow-inner mb-4">
-          0700 123 456
+            <div class="bg-green-100 text-green-800 font-semibold text-xl py-3 rounded-lg shadow-inner mb-4">
+                0700 123 456
+            </div>
+
+            <p class="text-sm text-gray-500">Use your name as the reference.</p>
         </div>
-
-        <p class="text-sm text-gray-500">Use your name as the reference.</p>
-      </div>
     </div>
-  </div>
+</div>
 
 
-  <!-- <section> CAROUSEL</section> -->
+<!-- <section> CAROUSEL</section> -->
 <!-- ___________________________________________________________________________________________________ -->
- 
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'heading': ['Outfit', 'sans-serif'],
-                        'body': ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
-                        'pulse-slow-delayed-1': 'pulse-slow 5s ease-in-out infinite 1s',
-                        'pulse-slow-delayed-2': 'pulse-slow 6s ease-in-out infinite 2s',
-                    },
-                    keyframes: {
-                        'pulse-slow': {
-                            '0%, 100%': { 
-                                transform: 'scale(1)', 
-                                opacity: '0.3' 
-                            },
-                            '50%': { 
-                                transform: 'scale(1.1)', 
-                                opacity: '0.5' 
-                            },
-                        }
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    'heading': ['Outfit', 'sans-serif'],
+                    'body': ['Plus Jakarta Sans', 'sans-serif'],
+                },
+                animation: {
+                    'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
+                    'pulse-slow-delayed-1': 'pulse-slow 5s ease-in-out infinite 1s',
+                    'pulse-slow-delayed-2': 'pulse-slow 6s ease-in-out infinite 2s',
+                },
+                keyframes: {
+                    'pulse-slow': {
+                        '0%, 100%': {
+                            transform: 'scale(1)',
+                            opacity: '0.3'
+                        },
+                        '50%': {
+                            transform: 'scale(1.1)',
+                            opacity: '0.5'
+                        },
                     }
                 }
             }
         }
-    </script>
-    <style>
-       
-    </style>
+    }
+</script>
+<style>
+
+</style>
 </head>
+
 <body class="bg-slate-50">
     <div class="w-full m-0 p-0">
         <div class="relative h-[600px] overflow-hidden">
             <!-- Slide 1: Stay Connected Card -->
-            <div class="hero-carousel-slide absolute inset-0 opacity-100 transition-opacity duration-800 ease-in-out pointer-events-auto" data-slide="0">
-                <div class="bg-gradient-to-br from-blue-600 to-emerald-500 flex items-center justify-center p-10 h-full">
+            <div class="hero-carousel-slide absolute inset-0 opacity-100 transition-opacity duration-800 ease-in-out pointer-events-auto"
+                data-slide="0">
+                <div
+                    class="bg-gradient-to-br from-blue-600 to-emerald-500 flex items-center justify-center p-10 h-full">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-15 max-w-[1100px] w-full items-center">
                         <div class="bg-white/15 backdrop-blur-xl border border-white/20 rounded-3xl p-10 shadow-2xl">
                             <h1 class="font-heading text-4xl font-bold mb-4 text-white">
                                 Stay Connected
                             </h1>
                             <p class="text-lg mb-8 text-white/90 leading-relaxed">
-                                Join a thriving community of Bard Boys making impact worldwide. 
+                                Join a thriving community of Bard Boys making impact worldwide.
                                 Access exclusive events, networking opportunities, and lifelong connections.
                             </p>
                             <div class="space-y-4">
-                                <button class="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold border-none cursor-pointer transition-all duration-300 inline-flex items-center gap-2 w-full justify-center hover:-translate-y-0.5 hover:shadow-2xl">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
-                                    </svg>
-                                    Become a Member
-                                </button>
-                                <button class="bg-transparent text-white px-8 py-4 rounded-xl font-semibold border-2 border-white cursor-pointer transition-all duration-300 inline-flex items-center gap-2 w-full justify-center hover:bg-white hover:text-blue-600">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                                    </svg>
-                                    View Events
-                                </button>
+                               <a href="{% url 'payment_instructions' %}"
+   class="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold border-none cursor-pointer transition-all duration-300 inline-flex items-center gap-2 w-full justify-center hover:-translate-y-0.5 hover:shadow-2xl">
+    
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+    </svg>
+
+    Become a Member
+</a>
+
+
+<a href="YOUR_VIEW_EVENTS_LINK_HERE"
+   class="bg-transparent text-white px-8 py-4 rounded-xl font-semibold border-2 border-white cursor-pointer transition-all duration-300 inline-flex items-center gap-2 w-full justify-center hover:bg-white hover:text-blue-600">
+    
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd"
+              d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+              clip-rule="evenodd" />
+    </svg>
+
+    View Events
+</a>
+
                             </div>
                         </div>
 
                         <div class="relative h-full hidden lg:flex items-center justify-center">
-                            <div class="absolute w-[300px] h-[300px] rounded-full border-2 border-white/20 animate-pulse-slow"></div>
-                            <div class="absolute w-[400px] h-[400px] rounded-full border-2 border-white/20 animate-pulse-slow-delayed-1"></div>
-                            <div class="absolute w-[500px] h-[500px] rounded-full border-2 border-white/20 animate-pulse-slow-delayed-2"></div>
+                            <div
+                                class="absolute w-[300px] h-[300px] rounded-full border-2 border-white/20 animate-pulse-slow">
+                            </div>
+                            <div
+                                class="absolute w-[400px] h-[400px] rounded-full border-2 border-white/20 animate-pulse-slow-delayed-1">
+                            </div>
+                            <div
+                                class="absolute w-[500px] h-[500px] rounded-full border-2 border-white/20 animate-pulse-slow-delayed-2">
+                            </div>
                             <div class="relative z-[5]">
                                 <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
-                                    <circle cx="100" cy="100" r="80" stroke="white" stroke-width="2" opacity="0.5"/>
-                                    <path d="M100 40 L120 80 L160 80 L130 105 L145 145 L100 115 L55 145 L70 105 L40 80 L80 80 Z" 
-                                          fill="white" opacity="0.8"/>
+                                    <circle cx="100" cy="100" r="80" stroke="white" stroke-width="2" opacity="0.5" />
+                                    <path
+                                        d="M100 40 L120 80 L160 80 L130 105 L145 145 L100 115 L55 145 L70 105 L40 80 L80 80 Z"
+                                        fill="white" opacity="0.8" />
                                 </svg>
                             </div>
                         </div>
@@ -117,32 +138,41 @@
             </div>
 
             <!-- Slide 2: Sports & Excellence -->
-            <div class="hero-carousel-slide absolute inset-0 opacity-0 transition-opacity duration-800 ease-in-out pointer-events-none" data-slide="1">
+            <div class="hero-carousel-slide absolute inset-0 opacity-0 transition-opacity duration-800 ease-in-out pointer-events-none"
+                data-slide="1">
                 <div class="relative w-full h-full">
-                    <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1920&h=1080&fit=crop&q=80" 
-                         alt="Sports Excellence" 
-                         class="w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1920&h=1080&fit=crop&q=80"
+                        alt="Sports Excellence" class="w-full h-full object-cover">
 
-                    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/45 flex items-center justify-start px-12 md:px-20">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/45 flex items-center justify-start px-12 md:px-20">
                         <div class="max-w-[650px] text-white" style="text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">
-                            <h2 class="font-heading text-4xl md:text-5xl font-bold mb-5 leading-tight" style="text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);">
-                                Excellence in Sports &<br/>
-                                <span class="text-emerald-400" style="text-shadow: 0 2px 10px rgba(52, 211, 153, 0.3);">Leadership</span>
+                            <h2 class="font-heading text-4xl md:text-5xl font-bold mb-5 leading-tight"
+                                style="text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);">
+                                Excellence in Sports &<br />
+                                <span class="text-emerald-400"
+                                    style="text-shadow: 0 2px 10px rgba(52, 211, 153, 0.3);">Leadership</span>
                             </h2>
-                            <p class="text-lg md:text-xl mb-6 leading-relaxed" style="text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);">
-                                From the rugby field to the boardroom, Bard Boys continue to excel. 
+                            <p class="text-lg md:text-xl mb-6 leading-relaxed"
+                                style="text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);">
+                                From the rugby field to the boardroom, Bard Boys continue to excel.
                                 Join our legacy of champions and leaders.
                             </p>
                             <div class="flex flex-wrap gap-4">
-                                <button class="bg-gradient-to-br from-orange-400 to-orange-600 text-white px-10 py-4 md:py-5 rounded-xl font-bold border-none cursor-pointer transition-all duration-300 inline-flex items-center gap-2.5 text-base md:text-lg shadow-lg shadow-orange-400/40 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-400/60">
+                                <a href="{% url 'users-register' %}"
+                                    class="bg-gradient-to-br from-orange-400 to-orange-600 text-white px-10 py-4 md:py-5 rounded-xl font-bold border-none cursor-pointer transition-all duration-300 inline-flex items-center gap-2.5 text-base md:text-lg shadow-lg shadow-orange-400/40 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-400/60">
                                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                        <path
+                                            d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z" />
                                     </svg>
                                     Explore Achievements
-                                </button>
-                                <button class="bg-white/15 backdrop-blur-md text-white px-10 py-4 md:py-5 rounded-xl font-semibold border-2 border-white/80 cursor-pointer transition-all duration-300 inline-flex items-center gap-2.5 text-base md:text-lg hover:bg-white hover:text-blue-600 hover:border-white hover:-translate-y-1">
+                                </a>
+
+                                <a href="{% url 'users-register' %}"
+                                    class="bg-white/15 backdrop-blur-md text-white px-10 py-4 md:py-5 rounded-xl font-semibold border-2 border-white/80 cursor-pointer transition-all duration-300 inline-flex items-center gap-2.5 text-base md:text-lg hover:bg-white hover:text-blue-600 hover:border-white hover:-translate-y-1">
                                     Learn More
-                                </button>
+                                </a>
+
                             </div>
                         </div>
                     </div>
@@ -150,32 +180,41 @@
             </div>
 
             <!-- Slide 3: Alumni Network -->
-            <div class="hero-carousel-slide absolute inset-0 opacity-0 transition-opacity duration-800 ease-in-out pointer-events-none" data-slide="2">
+            <div class="hero-carousel-slide absolute inset-0 opacity-0 transition-opacity duration-800 ease-in-out pointer-events-none"
+                data-slide="2">
                 <div class="relative w-full h-full">
-                    <img src="{% static 'images/pic1.jpg' %}" 
-                         alt="Alumni Network" 
-                         class="w-full h-full object-cover">
+                    <img src="{% static 'images/pic1.jpg' %}" alt="Alumni Network" class="w-full h-full object-cover">
 
-                    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/45 flex items-center justify-start px-12 md:px-20">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/45 flex items-center justify-start px-12 md:px-20">
                         <div class="max-w-[650px] text-white" style="text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">
-                            <h2 class="font-heading text-4xl md:text-5xl font-bold mb-5 leading-tight" style="text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);">
-                                Bard Boys<br/>
-                                <span class="text-orange-400" style="text-shadow: 0 2px 10px rgba(251, 146, 60, 0.3);">Forever</span>
+                            <h2 class="font-heading text-4xl md:text-5xl font-bold mb-5 leading-tight"
+                                style="text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);">
+                                Bard Boys<br />
+                                <span class="text-orange-400"
+                                    style="text-shadow: 0 2px 10px rgba(251, 146, 60, 0.3);">Forever</span>
                             </h2>
-                            <p class="text-lg md:text-xl mb-6 leading-relaxed" style="text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);">
-                                A global network of over 10,000 alumni making waves across industries. 
+                            <p class="text-lg md:text-xl mb-6 leading-relaxed"
+                                style="text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);">
+                                A global network of over 10,000 alumni making waves across industries.
                                 Your story is part of our legacy.
                             </p>
                             <div class="flex flex-wrap gap-4">
-                                <button class="bg-gradient-to-br from-orange-400 to-orange-600 text-white px-10 py-4 md:py-5 rounded-xl font-bold border-none cursor-pointer transition-all duration-300 inline-flex items-center gap-2.5 text-base md:text-lg shadow-lg shadow-orange-400/40 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-400/60">
+                                <a href="{% url 'users-register' %}"
+                                    class="bg-gradient-to-br from-orange-400 to-orange-600 text-white px-10 py-4 md:py-5 rounded-xl font-bold border-none cursor-pointer transition-all duration-300 inline-flex items-center gap-2.5 text-base md:text-lg shadow-lg shadow-orange-400/40 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-400/60">
                                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"/>
+                                        <path
+                                            d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z" />
                                     </svg>
                                     Join the Network
-                                </button>
-                                <button class="bg-white/15 backdrop-blur-md text-white px-10 py-4 md:py-5 rounded-xl font-semibold border-2 border-white/80 cursor-pointer transition-all duration-300 inline-flex items-center gap-2.5 text-base md:text-lg hover:bg-white hover:text-blue-600 hover:border-white hover:-translate-y-1">
+                                </a>
+
+                                <a href="{% url 'users-register' %}"
+                                    class="bg-white/15 backdrop-blur-md text-white px-10 py-4 md:py-5 rounded-xl font-semibold border-2 border-white/80 cursor-pointer transition-all duration-300 inline-flex items-center gap-2.5 text-base md:text-lg hover:bg-white hover:text-blue-600 hover:border-white hover:-translate-y-1">
                                     View Directory
-                                </button>
+                                </a>
+
+
                             </div>
                         </div>
                     </div>
@@ -183,32 +222,33 @@
             </div>
 
             <!-- Navigation Arrows -->
-            <button class="absolute top-1/2 -translate-y-1/2 left-8 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center cursor-pointer transition-all duration-300 z-10 hover:bg-white/30 hover:scale-110" 
-                    aria-label="Previous slide"
-                    id="prevBtn">
+            <button
+                class="absolute top-1/2 -translate-y-1/2 left-8 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center cursor-pointer transition-all duration-300 z-10 hover:bg-white/30 hover:scale-110"
+                aria-label="Previous slide" id="prevBtn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
                 </svg>
             </button>
-            <button class="absolute top-1/2 -translate-y-1/2 right-8 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center cursor-pointer transition-all duration-300 z-10 hover:bg-white/30 hover:scale-110" 
-                    aria-label="Next slide"
-                    id="nextBtn">
+            <button
+                class="absolute top-1/2 -translate-y-1/2 right-8 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center cursor-pointer transition-all duration-300 z-10 hover:bg-white/30 hover:scale-110"
+                aria-label="Next slide" id="nextBtn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
                 </svg>
             </button>
 
             <!-- Carousel Indicators -->
-            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 bg-black/30 backdrop-blur-md px-5 py-3 rounded-full z-10">
-                <button class="hero-carousel-indicator w-2.5 h-2.5 rounded-full bg-white border-none cursor-pointer transition-all duration-300" 
-                        data-slide="0" 
-                        aria-label="Go to slide 1"></button>
-                <button class="hero-carousel-indicator w-2.5 h-2.5 rounded-full bg-white/50 border-none cursor-pointer transition-all duration-300" 
-                        data-slide="1" 
-                        aria-label="Go to slide 2"></button>
-                <button class="hero-carousel-indicator w-2.5 h-2.5 rounded-full bg-white/50 border-none cursor-pointer transition-all duration-300" 
-                        data-slide="2" 
-                        aria-label="Go to slide 3"></button>
+            <div
+                class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 bg-black/30 backdrop-blur-md px-5 py-3 rounded-full z-10">
+                <button
+                    class="hero-carousel-indicator w-2.5 h-2.5 rounded-full bg-white border-none cursor-pointer transition-all duration-300"
+                    data-slide="0" aria-label="Go to slide 1"></button>
+                <button
+                    class="hero-carousel-indicator w-2.5 h-2.5 rounded-full bg-white/50 border-none cursor-pointer transition-all duration-300"
+                    data-slide="1" aria-label="Go to slide 2"></button>
+                <button
+                    class="hero-carousel-indicator w-2.5 h-2.5 rounded-full bg-white/50 border-none cursor-pointer transition-all duration-300"
+                    data-slide="2" aria-label="Go to slide 3"></button>
             </div>
         </div>
     </div>
@@ -223,7 +263,7 @@
                 this.nextBtn = document.getElementById('nextBtn');
                 this.currentSlide = 0;
                 this.autoPlayInterval = null;
-                
+
                 this.init();
             }
 
@@ -292,18 +332,18 @@
                 // Remove active state from current slide
                 this.slides[this.currentSlide].classList.remove('opacity-100', 'pointer-events-auto');
                 this.slides[this.currentSlide].classList.add('opacity-0', 'pointer-events-none');
-                
+
                 // Update indicator - remove active state
                 this.indicators[this.currentSlide].classList.remove('w-8', 'rounded-md', 'bg-white');
                 this.indicators[this.currentSlide].classList.add('w-2.5', 'rounded-full', 'bg-white/50');
-                
+
                 // Update current slide index
                 this.currentSlide = index;
-                
+
                 // Add active state to new slide
                 this.slides[this.currentSlide].classList.remove('opacity-0', 'pointer-events-none');
                 this.slides[this.currentSlide].classList.add('opacity-100', 'pointer-events-auto');
-                
+
                 // Update indicator - add active state
                 this.indicators[this.currentSlide].classList.remove('w-2.5', 'rounded-full', 'bg-white/50');
                 this.indicators[this.currentSlide].classList.add('w-8', 'rounded-md', 'bg-white');
@@ -351,7 +391,7 @@
 
 
 
-<!-- ______c____________________________________________________________________________________________________- -->
+    <!-- ______c____________________________________________________________________________________________________- -->
 
 
 
@@ -364,82 +404,82 @@
 
 
     <!-- Quick Links Section -->
- <section class="py-16 bg-white mt-0">
-    <div class="max-w-7xl mx-auto px-6">
+    <section class="py-16 bg-white mt-0">
+        <div class="max-w-7xl mx-auto px-6">
 
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Quick Access</h2>
-            <p class="text-xl text-gray-600">Everything you need as a Barding Alumni member</p>
-        </div>
-
-        <!-- Swiper Container -->
-        <div class="swiper quick-swiper pb-10">
-            <div class="swiper-wrapper">
-
-                <!-- CARD 1 -->
-                <div class="swiper-slide">
-                    <div
-                        class="group bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 hover:rotate-1 cursor-pointer">
-                        <div
-                            class="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">Update Your Info</h3>
-                        <p class="text-gray-600">Keep your contact details current</p>
-                    </div>
-                </div>
-
-                <!-- CARD 2 -->
-                <div class="swiper-slide">
-                    <div
-                        class="group bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 hover:rotate-1 cursor-pointer">
-                        <div
-                            class="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">Update Your Info</h3>
-                        <p class="text-gray-600">Keep your contact details current</p>
-                    </div>
-                </div>
-
-                
-                <!-- CARD 3 -->
-                <div class="swiper-slide">
-                    <div
-                        class="group bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 hover:-rotate-1 cursor-pointer">
-                        <div
-                            class="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">Find Classmates</h3>
-                        <p class="text-gray-600">Connect with fellow Bard Boys</p>
-                    </div>
-                </div>
-
-                <!-- Add more cards as needed -->
-
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Quick Access</h2>
+                <p class="text-xl text-gray-600">Everything you need as a Barding Alumni member</p>
             </div>
 
-            <!-- Navigation Arrows -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <!-- Swiper Container -->
+            <div class="swiper quick-swiper pb-10">
+                <div class="swiper-wrapper">
 
-            <!-- Pagination -->
-            <div class="swiper-pagination"></div>
+                    <!-- CARD 1 -->
+                    <div class="swiper-slide">
+                        <div
+                            class="group bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 hover:rotate-1 cursor-pointer">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Update Your Info</h3>
+                            <p class="text-gray-600">Keep your contact details current</p>
+                        </div>
+                    </div>
+
+                    <!-- CARD 2 -->
+                    <div class="swiper-slide">
+                        <div
+                            class="group bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 hover:rotate-1 cursor-pointer">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Update Your Info</h3>
+                            <p class="text-gray-600">Keep your contact details current</p>
+                        </div>
+                    </div>
+
+
+                    <!-- CARD 3 -->
+                    <div class="swiper-slide">
+                        <div
+                            class="group bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 hover:-rotate-1 cursor-pointer">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Find Classmates</h3>
+                            <p class="text-gray-600">Connect with fellow Bard Boys</p>
+                        </div>
+                    </div>
+
+                    <!-- Add more cards as needed -->
+
+                </div>
+
+                <!-- Navigation Arrows -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+
         </div>
-
-    </div>
-</section>
+    </section>
 
 
 
@@ -452,7 +492,7 @@
 
 
 
-    
+
 
 
     <!-- Stats Section -->
@@ -460,9 +500,11 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 <div class="text-white">
-                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div
+                        class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                            <path
+                                d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
                         </svg>
                     </div>
                     <div class="text-3xl md:text-4xl font-bold mb-2">450+</div>
@@ -470,9 +512,11 @@
                 </div>
 
                 <div class="text-white">
-                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div
+                        class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            <path
+                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
                     </div>
                     <div class="text-3xl md:text-4xl font-bold mb-2">15</div>
@@ -480,9 +524,12 @@
                 </div>
 
                 <div class="text-white">
-                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div
+                        class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd"
+                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                clip-rule="evenodd" />
                         </svg>
                     </div>
                     <div class="text-3xl md:text-4xl font-bold mb-2">25+</div>
@@ -490,9 +537,12 @@
                 </div>
 
                 <div class="text-white">
-                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div
+                        class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd"
+                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                clip-rule="evenodd" />
                         </svg>
                     </div>
                     <div class="text-3xl md:text-4xl font-bold mb-2">100+</div>
@@ -503,185 +553,220 @@
     </section>
 
     <!-- News & Events -->
-    <section id='events'class="py-16 bg-gray-50">
+    <section class="py-16 bg-gray-50">
+
+
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Latest News & Events</h2>
                 <p class="text-xl text-gray-600">Stay updated with what's happening in our community</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="h-48 bg-gradient-to-br from-blue-400 to-emerald-500 flex items-center justify-center">
-                        <div class="text-white text-center">
-                            <svg class="w-12 h-12 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-sm font-medium">Event</span>
+
+
+
+                <div class="swiper-slide flex justify-center">
+                    <div class="w-full max-w-sm bg-white/40 backdrop-blur-xl 
+          rounded-2xl shadow-xl transform transition-all duration-500 
+          hover:-translate-y-3 hover:scale-[1.02] hover:shadow-2xl 
+          border border-white/30">
+
+                        <div
+                            class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow swiper mySwiper cursor-grab active:cursor-grabbing">
+                            <img src="{% static 'images/benefits3.png' %}" alt="KCSE Banner" class=" object-cover" />
+                            <div class="p-6">
+                                <div class="text-sm text-emerald-600 font-medium mb-2">August 15, 2025</div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3">Annual Alumni Reunion 2025</h3>
+                                <p class="text-gray-600 mb-4">Join us for the biggest gathering of Bard Boys this year
+                                    at
+                                    our alma
+                                    mater.</p>
+                                <button class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                    Read More
+                                    <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-sm text-emerald-600 font-medium mb-2">August 15, 2025</div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Annual Alumni Reunion 2025</h3>
-                        <p class="text-gray-600 mb-4">Join us for the biggest gathering of Bard Boys this year at our alma mater.</p>
-                        <button class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                            Read More 
-                            <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                        </button>
+
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="h-48 bg-gradient-to-br from-blue-400 to-emerald-500 flex items-center justify-center">
-                        <div class="text-white text-center">
-                            <svg class="w-12 h-12 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                            </svg>
-                            <span class="text-sm font-medium">Achievement</span>
+
+
+                <div class="swiper-slide flex justify-center">
+                    <div class="w-full max-w-sm bg-white/40 backdrop-blur-xl 
+          rounded-2xl shadow-xl transform transition-all duration-500 
+          hover:-translate-y-3 hover:scale-[1.02] hover:shadow-2xl 
+          border border-white/30">
+
+                        <div
+                            class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow swiper mySwiper cursor-grab active:cursor-grabbing">
+                            <img src="{% static 'images/benefits.png' %}" alt="KCSE Banner" class=" object-cover" />
+                            <div class="p-6">
+                                <div class="text-sm text-emerald-600 font-medium mb-2">July 20, 2025</div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3">Scholarship Fund Milestone</h3>
+                                <p class="text-gray-600 mb-4">We've raised over 500,000 KSH to support current student
+                                </p>
+                                <a href="/your-link-here"
+                                    class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium hover:underline">
+                                    Read More
+                                    <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-sm text-emerald-600 font-medium mb-2">July 20, 2025</div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Scholarship Fund Milestone</h3>
-                        <p class="text-gray-600 mb-4">We've raised over 500,000 KSH to support current students.</p>
-                        <button class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                            Read More 
-                            <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                        </button>
+
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="h-48 bg-gradient-to-br from-blue-400 to-emerald-500 flex items-center justify-center">
-                        <div class="text-white text-center">
-                            <svg class="w-12 h-12 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-sm font-medium">News</span>
+
+                <div class="swiper-slide flex justify-center">
+                    <div class="w-full max-w-sm bg-white/40 backdrop-blur-xl 
+          rounded-2xl shadow-xl transform transition-all duration-500 
+          hover:-translate-y-3 hover:scale-[1.02] hover:shadow-2xl 
+          border border-white/30">
+
+                        <div
+                            class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow swiper mySwiper cursor-grab active:cursor-grabbing">
+                            <img src="{% static 'images/benefits.png' %}" alt="KCSE Banner" class=" object-cover" />
+                            <div class="p-6">
+                                <div class="text-sm text-emerald-600 font-medium mb-2">July 10, 2025</div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3">New Chapter in Nairobi</h3>
+                                <p class="text-gray-600 mb-4">Expanding our reach with a new regional chapter for
+                                    Nairobi-based alumni.</p>
+                                <a href="/your-link-here"
+                                    class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium hover:underline">
+                                    Read More
+                                    <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-sm text-emerald-600 font-medium mb-2">July 10, 2025</div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">New Chapter in Nairobi</h3>
-                        <p class="text-gray-600 mb-4">Expanding our reach with a new regional chapter for Nairobi-based alumni.</p>
-                        <button class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                            Read More 
-                            <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                        </button>
+
                     </div>
                 </div>
-            </div>
-        </div>
+
+
+
+
+
+
+
     </section>
 
 
     <!-- Another Couresel Test section  -->
 
-<section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-    <div class="swiper quick-swiper pb-10">
-        <div class="swiper-wrapper">
-    
-            <!-- CARD 1 -->
-            <div class="swiper-slide">
-                <div
-                    class="group bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 hover:rotate-1 cursor-pointer">
-                    <div
-                        class="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
-                        </svg>
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="swiper quick-swiper pb-10">
+                <div class="swiper-wrapper">
+
+                    <!-- CARD 1 -->
+                    <div class="swiper-slide">
+                        <div
+                            class="group bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 hover:rotate-1 cursor-pointer">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Update Your Info</h3>
+                            <p class="text-gray-600">Keep your contact details current</p>
+                        </div>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Update Your Info</h3>
-                    <p class="text-gray-600">Keep your contact details current</p>
-                </div>
-            </div>
-    
-            <!-- CARD 1 -->
-            <div class="swiper-slide">
-                <div
-                    class="group bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 hover:rotate-1 cursor-pointer">
-                    <div
-                        class="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
-                        </svg>
+
+                    <!-- CARD 1 -->
+                    <div class="swiper-slide">
+                        <div
+                            class="group bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 hover:rotate-1 cursor-pointer">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Update Your Info</h3>
+                            <p class="text-gray-600">Keep your contact details current</p>
+                        </div>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Update Your Info</h3>
-                    <p class="text-gray-600">Keep your contact details current</p>
-                </div>
-            </div>
-    
-    
-            <!-- CARD 2 -->
-            <div class="swiper-slide">
-                <div
-                    class="group bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 hover:-rotate-1 cursor-pointer">
-                    <div
-                        class="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                clip-rule="evenodd" />
-                        </svg>
+
+
+                    <!-- CARD 2 -->
+                    <div class="swiper-slide">
+                        <div
+                            class="group bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 hover:-rotate-1 cursor-pointer">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Find Classmates</h3>
+                            <p class="text-gray-600">Connect with fellow Bard Boys</p>
+                        </div>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Find Classmates</h3>
-                    <p class="text-gray-600">Connect with fellow Bard Boys</p>
-                </div>
-            </div>
-    
-            <!-- CARD 3 -->
-            <div class="swiper-slide">
-                <div
-                    class="group bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 hover:rotate-1 cursor-pointer">
-                    <div
-                        class="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                clip-rule="evenodd" />
-                        </svg>
+
+                    <!-- CARD 3 -->
+                    <div class="swiper-slide">
+                        <div
+                            class="group bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 hover:rotate-1 cursor-pointer">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Upcoming Events</h3>
+                            <p class="text-gray-600">Join alumni gatherings</p>
+                        </div>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Upcoming Events</h3>
-                    <p class="text-gray-600">Join alumni gatherings</p>
-                </div>
-            </div>
-    
-            <!-- CARD 4 -->
-            <div class="swiper-slide">
-                <div
-                    class="group bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 hover:-rotate-1 cursor-pointer">
-                    <div
-                        class="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                clip-rule="evenodd" />
-                        </svg>
+
+                    <!-- CARD 4 -->
+                    <div class="swiper-slide">
+                        <div
+                            class="group bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2 hover:-rotate-1 cursor-pointer">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Give Back</h3>
+                            <p class="text-gray-600">Support current students</p>
+                        </div>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Give Back</h3>
-                    <p class="text-gray-600">Support current students</p>
+
                 </div>
+
+                <!-- Navigation arrows (hidden on mobile) -->
+                <div class="swiper-button-prev hidden lg:flex"></div>
+                <div class="swiper-button-next hidden lg:flex"></div>
+
+                <!-- Pagination (for mobile dots) -->
+                <div class="swiper-pagination lg:hidden"></div>
+
             </div>
-    
         </div>
-    
-        <!-- Navigation arrows (hidden on mobile) -->
-        <div class="swiper-button-prev hidden lg:flex"></div>
-        <div class="swiper-button-next hidden lg:flex"></div>
-    
-        <!-- Pagination (for mobile dots) -->
-        <div class="swiper-pagination lg:hidden"></div>
-    
-    </div>
-    </div>
     </section>
 
 
@@ -694,11 +779,12 @@
 
 
     <!-- Contact Section -->
-    
+
     <!-- Footer -->
-    
-</head>
-<body>
-    <!-- Wave Header -->
-  
-{% endblock content %}
+
+    </head>
+
+    <body>
+        <!-- Wave Header -->
+
+        {% endblock content %}

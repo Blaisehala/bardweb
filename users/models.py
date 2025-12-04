@@ -6,8 +6,8 @@ import string
 # Create your models here.
 
 class MemberNumber(models.Model):
-    first_name = models.CharField(max_length=10,default='active')
-    last_name = models.CharField(max_length=10,default='active')
+    first_name = models.CharField(max_length=10,verbose_name="First Name", blank=True)
+    last_name = models.CharField(max_length=10,verbose_name="First Name", blank=True)
     member_number = models.IntegerField(unique=True, verbose_name="Member Number")
     secret_code = models.CharField(max_length=8, unique=True, verbose_name="Secret Code")
     phone_number = models.CharField(max_length=15, verbose_name="Phone Number")

@@ -1,89 +1,146 @@
-
-
 {% extends "bardapp/base.html" %}
 {% block content %}
 
-   
- <section class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Latest News & Events</h2>
-                <p class="text-xl text-gray-600">Stay updated with what's happening in our community</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="h-48 bg-gradient-to-br from-blue-400 to-emerald-500 flex items-center justify-center">
-                        <div class="text-white text-center">
-                            <svg class="w-12 h-12 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-sm font-medium">Event</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-sm text-emerald-600 font-medium mb-2">August 15, 2025</div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Annual Alumni Reunion 2025</h3>
-                        <p class="text-gray-600 mb-4">Join us for the biggest gathering of Bard Boys this year at our alma mater.</p>
-                        <button class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                            Read More 
-                            <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
 
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="h-48 bg-gradient-to-br from-blue-400 to-emerald-500 flex items-center justify-center">
-                        <div class="text-white text-center">
-                            <svg class="w-12 h-12 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                            </svg>
-                            <span class="text-sm font-medium">Achievement</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-sm text-emerald-600 font-medium mb-2">July 20, 2025</div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Scholarship Fund Milestone</h3>
-                        <p class="text-gray-600 mb-4">We've raised over 500,000 KSH to support current students.</p>
-                        <button class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                            Read More 
-                            <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+{% load static %}
 
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="h-48 bg-gradient-to-br from-blue-400 to-emerald-500 flex items-center justify-center">
-                        <div class="text-white text-center">
-                            <svg class="w-12 h-12 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-sm font-medium">News</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-sm text-emerald-600 font-medium mb-2">July 10, 2025</div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">New Chapter in Nairobi</h3>
-                        <p class="text-gray-600 mb-4">Expanding our reach with a new regional chapter for Nairobi-based alumni.</p>
-                        <button class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                            Read More 
-                            <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
+<section class="py-16 bg-gray-50">
+
+
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Latest News & Events</h2>
+            <p class="text-xl text-gray-600">Stay updated with what's happening in our community</p>
         </div>
-    </section>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+
+
+            <div class="swiper-slide flex justify-center">
+                <div class="w-full max-w-sm bg-white/40 backdrop-blur-xl 
+          rounded-2xl shadow-xl transform transition-all duration-500 
+          hover:-translate-y-3 hover:scale-[1.02] hover:shadow-2xl 
+          border border-white/30">
+
+                    <div
+                        class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow swiper mySwiper cursor-grab active:cursor-grabbing">
+                        <img src="{% static 'images/benefits.png' %}" alt="KCSE Banner" class=" object-cover" />
+                        <div class="p-6">
+                            <div class="text-sm text-emerald-600 font-medium mb-2">August 15, 2025</div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Annual Alumni Reunion 2025</h3>
+                            <p class="text-gray-600 mb-4">Join us for the biggest gathering of Bard Boys this year at
+                                our alma
+                                mater.</p>
+                            <button class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                Read More
+                                <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="swiper-slide flex justify-center">
+                <div class="w-full max-w-sm bg-white/40 backdrop-blur-xl 
+          rounded-2xl shadow-xl transform transition-all duration-500 
+          hover:-translate-y-3 hover:scale-[1.02] hover:shadow-2xl 
+          border border-white/30">
+
+                    <div
+                        class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow swiper mySwiper cursor-grab active:cursor-grabbing">
+                        <img src="{% static 'images/benefits.png' %}" alt="KCSE Banner" class=" object-cover" />
+                        <div class="p-6">
+                            <div class="text-sm text-emerald-600 font-medium mb-2">July 20, 2025</div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Scholarship Fund Milestone</h3>
+                            <p class="text-gray-600 mb-4">We've raised over 500,000 KSH to support current student</p>
+                            <a href="/your-link-here"
+                                class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium hover:underline">
+                                Read More
+                                <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="swiper-slide flex justify-center">
+                <div class="w-full max-w-sm bg-white/40 backdrop-blur-xl 
+          rounded-2xl shadow-xl transform transition-all duration-500 
+          hover:-translate-y-3 hover:scale-[1.02] hover:shadow-2xl 
+          border border-white/30">
+
+                    <div
+                        class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow swiper mySwiper cursor-grab active:cursor-grabbing">
+                        <img src="{% static 'images/benefits.png' %}" alt="KCSE Banner" class=" object-cover" />
+                        <div class="p-6">
+                            <div class="text-sm text-emerald-600 font-medium mb-2">July 10, 2025</div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">New Chapter in Nairobi</h3>
+                            <p class="text-gray-600 mb-4">Expanding our reach with a new regional chapter for Nairobi-based alumni.</p>
+                            <a href="/your-link-here"
+                                class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium hover:underline">
+                                Read More
+                                <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+           
+
+
+
+
+</section>
+
+
+
+<script>
+    const swiper = new Swiper(".mySwiper", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        loop: true,
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 180,
+            modifier: 1.5,
+            slideShadows: false,
+        },
+
+        autoplay: {
+            delay: 3500,
+            disableOnInteraction: false,
+        },
+
+        breakpoints: {
+            0: { slidesPerView: 1.1 },
+            640: { slidesPerView: 1.4 },
+            1024: { slidesPerView: 2.2 },
+        }
+    });
+</script>
+
 
 {% endblock content %}
-
-
-
-
-
-

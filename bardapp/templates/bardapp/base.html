@@ -164,7 +164,7 @@
                           {% if not user.is_authenticated %}
             <a href="{% url 'users-register' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Join Today</a>
         {% endif %}
-        <a href="{% url 'bard-members' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Member Benefits</a>
+        <a href="{% url 'memberbenefits' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Member Benefits</a>
         {% if user.is_authenticated %}
             <a href="{% url 'member_dashboard' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Member Dashboard</a>
         {% else %}
@@ -269,79 +269,159 @@
                 </button>
             </div>
 
-            <!-- Mobile menu -->
-            <div id="mobile-menu" class="lg:hidden mt-4 pb-4 border-t pt-4 hidden slide-in">
-                <div class="space-y-1">
-                    <!-- Mobile Search -->
-                    <div class="px-3 py-2 mb-3">
-                        <div class="flex items-center bg-gray-100 rounded-lg px-3 py-2">
-                            <svg class="w-5 h-5 text-gray-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
-                            </svg>
-                            <input
-                                type="text"
-                                placeholder="Search..."
-                                class="bg-transparent flex-1 focus:outline-none text-sm"
-                            />
-                        </div>
-                    </div>
-                    
-                    <button class="block w-full text-left px-3 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded transition-colors font-medium">
-                        Membership
-                    </button>
-                    <button class="block w-full text-left px-3 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded transition-colors font-medium">
-                        Get Involved
-                    </button>
-                    <button class="block w-full text-left px-3 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded transition-colors font-medium">
-                        Give Back
-                    </button>
-                    <button class="block w-full text-left px-3 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded transition-colors font-medium">
-                        Events
-                    </button>
-                    <button class="block w-full text-left px-3 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded transition-colors font-medium">
-                        Resources
-                    </button>
-                    <button class="block w-full text-left px-3 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded transition-colors font-medium">
-                        About
-                    </button>
-                    
-                    <!-- Mobile CTA buttons -->
 
-
-     <div class="px-3 pt-4 space-y-2">
-    <a href="/donate" class="block w-full bg-orange-500 hover:bg-orange-600 text-white py-3 px-4 rounded-lg font-medium transition-colors text-center">
-        Give
-    </a>
-    
-    {% if user.is_authenticated %}
-        <!-- Logged in mobile user -->
-        <div class="bg-gray-100 rounded-lg p-3 mb-2">
-            <p class="text-sm text-gray-600">Logged in as</p>
-            <p class="font-semibold text-gray-900">{{ user.username }}</p>
-        </div>
-        <a href="{% url 'member_dashboard' %}" class="block w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium transition-colors text-center">
-            Dashboard
-        </a>
-        <a href="{% url 'logout' %}" class="block w-full bg-red-600 hover:bg-red-700 text-white py-3 px-4 rounded-lg font-medium transition-colors text-center flex items-center justify-center">
-            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-            </svg>
-            Logout
-        </a>
-    {% else %}
-        <!-- Not logged in mobile -->
-        <a href="{% url 'login' %}" class="block w-full border border-gray-300 hover:border-gray-400 text-gray-700 py-3 px-4 rounded-lg font-medium transition-colors text-center">
-            Log In
-        </a>
-        <a href="{% url 'users-register' %}" class="block w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium transition-colors text-center">
-            Register
-        </a>
-    {% endif %}
-</div>              
-
-                    
-                </div>
+<!-- Mobile menu -->
+<div id="mobile-menu" class="lg:hidden mt-4 pb-4 border-t pt-4 hidden">
+    <div class="space-y-1 px-3">
+        
+        <!-- Mobile Search -->
+        <div class="mb-3">
+            <div class="flex items-center bg-gray-100 rounded-lg px-3 py-2">
+                <svg class="w-5 h-5 text-gray-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+                </svg>
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    class="bg-transparent flex-1 focus:outline-none text-sm"
+                />
             </div>
+        </div>
+        
+        <!-- Membership Dropdown -->
+        <div class="border-b">
+            <button onclick="toggleMobileDropdown('membership')" class="w-full flex items-center justify-between py-3 text-gray-700 hover:text-blue-600 font-medium">
+                <span>Membership</span>
+                <svg id="membership-icon" class="w-4 h-4 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+            <div id="membership-dropdown" class="hidden pl-4 pb-2 space-y-1">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'member_dashboard' %}" class="block py-2 text-gray-600 hover:text-blue-600">Dashboard</a>
+                    <a href="{% url 'profile_view' user.username %}" class="block py-2 text-gray-600 hover:text-blue-600">My Profile</a>
+                    <a href="{% url 'alumni_directory' %}" class="block py-2 text-gray-600 hover:text-blue-600">Alumni Directory</a>
+                {% else %}
+                    <a href="{% url 'users-register' %}" class="block py-2 text-gray-600 hover:text-blue-600">Join Today</a>
+                    <a href="{% url 'bard-members' %}" class="block py-2 text-gray-600 hover:text-blue-600">Member Benefits</a>
+                    <a href="{% url 'login' %}" class="block py-2 text-gray-600 hover:text-blue-600">Member Login</a>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Events Dropdown -->
+        <div class="border-b">
+            <button onclick="toggleMobileDropdown('events')" class="w-full flex items-center justify-between py-3 text-gray-700 hover:text-blue-600 font-medium">
+                <span>Events</span>
+                <svg id="events-icon" class="w-4 h-4 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+            <div id="events-dropdown" class="hidden pl-4 pb-2 space-y-1">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'event_list' %}" class="block py-2 text-gray-600 hover:text-emerald-600">All Events</a>
+                    <a href="{% url 'bard-events' %}" class="block py-2 text-gray-600 hover:text-emerald-600">Upcoming Events</a>
+                {% else %}
+                    <a href="{% url 'bard-events' %}" class="block py-2 text-gray-600 hover:text-emerald-600">View Events</a>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Get Involved Dropdown -->
+        <div class="border-b">
+            <button onclick="toggleMobileDropdown('involved')" class="w-full flex items-center justify-between py-3 text-gray-700 hover:text-blue-600 font-medium">
+                <span>Get Involved</span>
+                <svg id="involved-icon" class="w-4 h-4 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+            <div id="involved-dropdown" class="hidden pl-4 pb-2 space-y-1">
+                <a href="#" class="block py-2 text-gray-600 hover:text-purple-600">Volunteer</a>
+                <a href="#" class="block py-2 text-gray-600 hover:text-purple-600">Mentorship</a>
+                <a href="#" class="block py-2 text-gray-600 hover:text-purple-600">Regional Chapters</a>
+            </div>
+        </div>
+        
+        <!-- Give Back Dropdown -->
+        <div class="border-b">
+            <button onclick="toggleMobileDropdown('giveback')" class="w-full flex items-center justify-between py-3 text-gray-700 hover:text-blue-600 font-medium">
+                <span>Give Back</span>
+                <svg id="giveback-icon" class="w-4 h-4 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+            <div id="giveback-dropdown" class="hidden pl-4 pb-2 space-y-1">
+                <a href="/donate" class="block py-2 text-gray-600 hover:text-orange-600">Make a Donation</a>
+                <a href="#" class="block py-2 text-gray-600 hover:text-orange-600">Scholarship Fund</a>
+                <a href="#" class="block py-2 text-gray-600 hover:text-orange-600">School Projects</a>
+            </div>
+        </div>
+        
+        <!-- Resources Dropdown -->
+        <div class="border-b">
+            <button onclick="toggleMobileDropdown('resources')" class="w-full flex items-center justify-between py-3 text-gray-700 hover:text-blue-600 font-medium">
+                <span>Resources</span>
+                <svg id="resources-icon" class="w-4 h-4 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+            <div id="resources-dropdown" class="hidden pl-4 pb-2 space-y-1">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'alumni_directory' %}" class="block py-2 text-gray-600 hover:text-blue-600">Alumni Directory</a>
+                {% endif %}
+                <a href="#" class="block py-2 text-gray-600 hover:text-blue-600">Career Services</a>
+                <a href="#" class="block py-2 text-gray-600 hover:text-blue-600">Business Network</a>
+            </div>
+        </div>
+        
+        <!-- About Dropdown -->
+        <div class="border-b">
+            <button onclick="toggleMobileDropdown('about')" class="w-full flex items-center justify-between py-3 text-gray-700 hover:text-blue-600 font-medium">
+                <span>About</span>
+                <svg id="about-icon" class="w-4 h-4 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+            <div id="about-dropdown" class="hidden pl-4 pb-2 space-y-1">
+                <a href="#" class="block py-2 text-gray-600 hover:text-gray-900">Our Story</a>
+                <a href="#" class="block py-2 text-gray-600 hover:text-gray-900">Leadership</a>
+                <a href="#" class="block py-2 text-gray-600 hover:text-gray-900">Constitution</a>
+            </div>
+        </div>
+        
+        <!-- Mobile CTA buttons -->
+        <div class="pt-4 space-y-2">
+            <a href="/donate" class="block w-full bg-orange-500 hover:bg-orange-600 text-white py-3 px-4 rounded-lg font-medium transition-colors text-center">
+                Give
+            </a>
+            
+            {% if user.is_authenticated %}
+                <!-- Logged in -->
+                <div class="bg-gradient-to-r from-blue-100 to-emerald-100 rounded-lg p-3">
+                    <p class="text-xs text-gray-600">Logged in as</p>
+                    <p class="font-bold text-gray-900">{{ user.username }}</p>
+                </div>
+                <a href="{% url 'member_dashboard' %}" class="block w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium transition-colors text-center">
+                    Dashboard
+                </a>
+                <a href="{% url 'logout' %}" class="block w-full bg-red-600 hover:bg-red-700 text-white py-3 px-4 rounded-lg font-medium transition-colors text-center">
+                    Logout
+                </a>
+            {% else %}
+                <!-- Not logged in -->
+                <a href="{% url 'login' %}" class="block w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 py-3 px-4 rounded-lg font-medium transition-colors text-center">
+                    Log In
+                </a>
+                <a href="{% url 'users-register' %}" class="block w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium transition-colors text-center">
+                    Register
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+       
+
+         
         </nav>
     </header>
 
@@ -464,21 +544,39 @@
     </footer>
 
 
-
-
-
-</body>
-</html>
-
    <!-- Global JavaScript -->
     <script src="{% static 'js/main.js' %}"></script>
     
     <!-- Page-specific JavaScript -->
     {% block extra_js %}{% endblock %}
       
+<script>
+// Mobile dropdown toggle function
+function toggleMobileDropdown(id) {
+    const dropdown = document.getElementById(id + '-dropdown');
+    const icon = document.getElementById(id + '-icon');
+    
+    // Toggle the dropdown
+    if (dropdown.classList.contains('hidden')) {
+        dropdown.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+    } else {
+        dropdown.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+    }
+}
+
+
+
+
+
+</script>
 
 </body>
 </html>
+
+
+
 
 
 
