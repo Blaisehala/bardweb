@@ -167,3 +167,53 @@ class Event(models.Model):
 
     def __str__(self):
         return self.titlef
+    
+
+
+
+class Donation(models.Model):
+    PAYMENT_METHODS = [
+        ('mpesa', 'M-Pesa'),
+        ('card', 'Credit/Debit Card'),
+    ]
+    
+    DONATION_CAUSES = [
+        ('general', 'General Fund'),
+        ('scholarship', 'Scholarship Fund'),
+        ('infrastructure', 'School Infrastructure'),
+        ('sports', 'Sports & Athletics'),
+        ('library', 'Library & Resources'),
+        ('emergency', 'Emergency Relief Fund'),
+    ]
+    
+    # Donor Information
+    donor = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    donor_name = models.CharField(max_length=200)
+    donor_email = models.EmailField()
+    donor_phone = models.CharField(max_length=15)
+    
+    # Donation Details
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    cause = models.CharField(max_length=50, choices=DONATION_CAUSES, default='general')
+    message = models.TextField(blank=True, help_text="Optional message or dedication")
+    
+    # Payment Details
+    payment_method = models.CharField(max_length=20, choices=PAYMENT_METHODS)
+    mpesa_phone = models.CharField(max_length=15, blank=True)
+    transaction_id = models.CharField(max_length=100, blank=True)
+    
+    # Status
+    is_completed = models.BooleanField(default=False)
+    is_anonymous = models.BooleanField(default=False)
+    
+    # Timestamps
+    created_at = models.DateTimeField(auto_now_add=True)
+    completed_at = models.DateTimeField(null=True, blank=True)
+    
+    def __str__(self):
+        return f"{self.donor_name} - KES {self.amount} ({self.cause})"
+    
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "Donation"
+        verbose_name_plural = "Donations"
