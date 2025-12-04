@@ -1,0 +1,94 @@
+
+{% extends "bardapp/base.html" %}
+{% block content %}
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Member Benefits</title>
+</head>
+<body class="bg-[#f5f9fc] font-sans">
+  <section class="max-w-7xl mx-auto py-20 px-6 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+
+    <!-- Left Column -->
+    <div class="space-y-10">
+      <div class="flex gap-4">
+        <div class="text-pink-600 text-4xl">📱</div>
+        <div>
+          <h3 class="text-xl font-semibold text-pink-700">Networking on-the-go</h3>
+          <p class="text-gray-700 text-sm">Barding Alumni is designed to allow members to connect and network across multiple platforms. These include WhatsApp, email, and virtual meetings. This expands professional opportunities beyond physical gatherings.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="text-pink-600 text-4xl">💼</div>
+        <div>
+          <h3 class="text-xl font-semibold text-pink-700">Career Opportunities & Job Referrals</h3>
+          <p class="text-gray-700 text-sm">Members benefit from exclusive job leads and professional referrals shared within the network. Alumni support each other by connecting fellows with opportunities in their respective industries and organizations.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="text-pink-600 text-4xl">📊</div>
+        <div>
+          <h3 class="text-xl font-semibold text-pink-700">Professional Development Resources</h3>
+          <p class="text-gray-700 text-sm">Our network provides access to mentorship programs, skill-building workshops, and industry insights. Members can engage with experienced professionals who offer guidance through direct interactions and group sessions.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Center Image -->
+    <div class="flex justify-center">
+        
+      <img src="{% static 'images/benefits3.png' %}" alt="Happy Student" class="rounded-xl shadow-lg" />
+    </div>
+
+    <!-- Right Column -->
+    <div class="space-y-10">
+      <div class="flex gap-4">
+        <div class="text-pink-600 text-4xl">🎯</div>
+        <div>
+          <h3 class="text-xl font-semibold text-pink-700">Member Support & Welfare</h3>
+          <p class="text-gray-700 text-sm">The alumni community stands together during important life moments. Members receive support during celebrations, challenges, and milestones, with coordinated assistance when fellow Bardians face genuine needs.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="text-pink-600 text-4xl">🎓 </div>
+        <div>
+          <h3 class="text-xl font-semibold text-pink-700"> Exclusive Member Events</h3>
+          <p class="text-gray-700 text-sm">Registered members enjoy priority access to alumni gatherings, reunions, and special events. These occasions strengthen bonds and create lasting memories while expanding professional and social networks.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="text-pink-600 text-4xl">💰</div>
+        <div>
+          <h3 class="text-xl font-semibold text-pink-700">Financial Growth Opportunities</h3>
+          <p class="text-gray-700 text-sm">Members participate in group investment initiatives, business partnerships, and collaborative ventures. The alumni network serves as a platform for economic empowerment and shared prosperity.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CTA Button -->
+  <div class="text-center pb-20">
+    <a href="#" class="bg-pink-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-pink-700 transition">Be Part of the Alumni team</a>
+  </div>
+
+
+
+
+
+{% endblock content %}
+
+
+
