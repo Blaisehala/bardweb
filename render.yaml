@@ -1,0 +1,65 @@
+databases:
+  - name: bard_alumni_db
+    databaseName: bard_alumni_db
+    user: bard_alumni_user
+
+services:
+  - type: web
+    name: bard-alumni-website
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn bardalumni.wsgi:application"
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: bard_alumni_db
+          property: connectionString
+```
+
+### 3.3 Create `.gitignore`
+
+**Create/Update:** `.gitignore`
+```
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Python
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+/media
+/staticfiles
+/static_collected
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+secrets.json

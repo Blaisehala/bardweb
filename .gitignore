@@ -16,16 +16,19 @@ __pycache__/
 # VSCode settings
 .vscode/
 .idea/
+*.swp
 
 # Environment variables / secrets
 .env
 *.env
+.env.local
 
 # Django specific
 /staticfiles/
 media/
 static/
 db.sqlite3
+*.log
 
 # Mac / Windows system files
 .DS_Store
