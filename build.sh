@@ -12,6 +12,6 @@ python manage.py collectstatic --no-input
 python manage.py migrate
 
 #creating superuser
-python manage.py creatsu
+python manage.py createsu
 
 
