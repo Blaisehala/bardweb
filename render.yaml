@@ -2,10 +2,12 @@ databases:
   - name: bard_alumni_db
     databaseName: bard_alumni_db
     user: bard_alumni_user
+    plan: free
 
 services:
   - type: web
     name: bard-alumni-website
+    plan: free
     env: python
     buildCommand: "./build.sh"
     startCommand: "gunicorn bardalumni.wsgi:application"
