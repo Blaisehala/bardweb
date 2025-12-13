@@ -17,7 +17,7 @@
 
 
 
-      <script src="https://cdn.tailwindcss.com"></script>
+      <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <script>
         tailwind.config = {
             theme: {
@@ -559,27 +559,7 @@
     <!-- Page-specific JavaScript -->
     {% block extra_js %}{% endblock %}
       
-<script>
-// Mobile dropdown toggle function
-function toggleMobileDropdown(id) {
-    const dropdown = document.getElementById(id + '-dropdown');
-    const icon = document.getElementById(id + '-icon');
-    
-    // Toggle the dropdown
-    if (dropdown.classList.contains('hidden')) {
-        dropdown.classList.remove('hidden');
-        icon.style.transform = 'rotate(180deg)';
-    } else {
-        dropdown.classList.add('hidden');
-        icon.style.transform = 'rotate(0deg)';
-    }
-}
 
-
-
-
-
-</script>
 
 </body>
 </html>
